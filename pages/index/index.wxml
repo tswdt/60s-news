@@ -1,25 +1,16 @@
 <view class="container">
-  <!-- 音频播放器 - 使用新闻封面作为背景 -->
-  <view class="audio-player-wrapper" wx:if="{{newsData}}">
-    <!-- 背景封面图 -->
-    <image class="player-bg-image" src="{{newsData.cover}}" mode="aspectFill" />
+  <!-- 新闻图片 + 音频播放器悬浮 -->
+  <view class="cover-player-wrapper" wx:if="{{newsData}}">
+    <!-- 新闻图片 - 原项目风格完整展示 -->
+    <image class="news-image" src="{{newsData.image}}" mode="widthFix" />
 
-    <!-- 悬浮播放器控件 -->
-    <view class="player-float">
-      <!-- 实时时间显示（只有时间是实时更新的） -->
-      <view class="datetime-bar">
-        <text class="datetime-text">{{currentTimeStr}}</text>
-      </view>
-
+    <!-- 透明悬浮播放器 -->
+    <view class="player-overlay">
       <!-- 播放控制区 -->
       <view class="player-control">
         <view class="control-left">
           <view class="play-btn-large" bindtap="playAudio">
             <text class="play-icon-large">{{isPlaying ? '⏸' : '▶'}}</text>
-          </view>
-          <view class="track-info">
-            <text class="track-title">每日60秒新闻</text>
-            <text class="track-artist">60s News · {{newsData.date}}</text>
           </view>
         </view>
         <view class="control-right">
@@ -42,23 +33,7 @@
       </view>
     </view>
 
-    <!-- 渐变遮罩 - 底部渐变让文字更清晰 -->
-    <view class="gradient-overlay"></view>
-  </view>
 
-  <!-- 新闻列表 -->
-  <view class="news-list-card" wx:if="{{newsData}}" bindtap="navigateToDetail">
-    <view class="news-content">
-      <view class="news-list">
-        <view class="news-item" wx:for="{{newsData.news}}" wx:key="index">
-          <text class="news-index">{{index + 1}}</text>
-          <text class="news-text">{{item}}</text>
-        </view>
-      </view>
-      <view class="tip">
-        <text class="tip-text">{{newsData.tip}}</text>
-      </view>
-    </view>
   </view>
 
   <view class="loading" wx:elif="{{loading}}">
