@@ -8,3 +8,10 @@ node_modules/
 
 cloudfunctions/**/node_modules/
 cloudbaserc/**/*.json
+
+# 音频文件
+audio/*.mp3
+!audio/.gitkeep
+
+# 测试音频
+audio/test_*.mp3
