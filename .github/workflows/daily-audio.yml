@@ -23,11 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install edge-tts moviepy
 
-      - name: Generate audio
+      - name: Generate audio with background music
         run: |
           DATE=$(date +%Y-%m-%d)
           echo "DATE=$DATE" >> $GITHUB_ENV
-          python scripts/generate-audio.py $DATE
+          python scripts/generate-audio-with-music.py
 
       - name: Commit and push audio
         run: |
