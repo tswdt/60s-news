@@ -1,11 +1,53 @@
 <view class="container">
-  <view class="header">
-    <text class="title">60s 每日新闻</text>
-    <text class="date">{{currentDate}}</text>
+  <!-- 音频播放器 - 使用新闻封面作为背景 -->
+  <view class="audio-player-wrapper" wx:if="{{newsData}}">
+    <!-- 背景封面图 -->
+    <image class="player-bg-image" src="{{newsData.cover}}" mode="aspectFill" />
+
+    <!-- 悬浮播放器控件 -->
+    <view class="player-float">
+      <!-- 实时时间显示（只有时间是实时更新的） -->
+      <view class="datetime-bar">
+        <text class="datetime-text">{{currentTimeStr}}</text>
+      </view>
+
+      <!-- 播放控制区 -->
+      <view class="player-control">
+        <view class="control-left">
+          <view class="play-btn-large" bindtap="playAudio">
+            <text class="play-icon-large">{{isPlaying ? '⏸' : '▶'}}</text>
+          </view>
+          <view class="track-info">
+            <text class="track-title">每日60秒新闻</text>
+            <text class="track-artist">60s News · {{newsData.date}}</text>
+          </view>
+        </view>
+        <view class="control-right">
+          <text class="duration-text">{{formatTime(currentTime)}} / {{formatTime(audioDuration)}}</text>
+        </view>
+      </view>
+
+      <!-- 进度条 -->
+      <view class="progress-wrapper">
+        <slider class="progress-slider" min="0" max="{{audioDuration}}" value="{{currentTime}}" block-size="12" activeColor="#ff6b6b" backgroundColor="rgba(255,255,255,0.3)" bindchange="seekAudio"/>
+      </view>
+
+      <!-- 音频波形动画 -->
+      <view class="waveform" wx:if="{{isPlaying}}">
+        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+      </view>
+    </view>
+
+    <!-- 渐变遮罩 - 底部渐变让文字更清晰 -->
+    <view class="gradient-overlay"></view>
   </view>
-  
-  <view class="news-card" wx:if="{{newsData}}" bindtap="navigateToDetail">
-    <image class="cover" src="{{newsData.cover}}" mode="aspectFill" />
+
+  <!-- 新闻列表 -->
+  <view class="news-list-card" wx:if="{{newsData}}" bindtap="navigateToDetail">
     <view class="news-content">
       <view class="news-list">
         <view class="news-item" wx:for="{{newsData.news}}" wx:key="index">
@@ -18,16 +60,16 @@
       </view>
     </view>
   </view>
-  
+
   <view class="loading" wx:elif="{{loading}}">
     <text>加载中...</text>
   </view>
-  
+
   <view class="error" wx:else>
     <text>加载失败，请重试</text>
     <button class="retry-btn" bindtap="handleRetry">重新加载</button>
   </view>
-  
+
   <view class="footer">
     <text class="footer-text">数据来源: 60s-static.viki.moe</text>
   </view>
