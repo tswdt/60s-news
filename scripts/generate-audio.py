@@ -41,7 +41,7 @@ def generate_audio(date, text):
         import asyncio
 
         async def main():
-            communicate = edge_tts.Communicate(text, "zh-CN-XiaoxiaoNeural")
+            communicate = edge_tts.Communicate(text, "zh-CN-YunyangNeural")
             await communicate.save(output_path)
 
         asyncio.run(main())

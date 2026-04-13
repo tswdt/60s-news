@@ -80,7 +80,7 @@ def generate_audio_with_music(date, text, bg_music_path=None):
         import asyncio
 
         async def main():
-            communicate = edge_tts.Communicate(text, "zh-CN-XiaoxiaoNeural")
+            communicate = edge_tts.Communicate(text, "zh-CN-YunyangNeural")
             await communicate.save(temp_voice_path)
 
         asyncio.run(main())

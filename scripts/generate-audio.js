@@ -2,7 +2,7 @@ const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
-const VOICE = "zh-CN-XiaoxiaoNeural";
+const VOICE = "zh-CN-YunyangNeural";
 const OUTPUT_DIR = path.join(__dirname, "..", "audio");
 
 function uuid() {
