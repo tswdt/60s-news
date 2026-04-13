@@ -26,12 +26,13 @@ jobs:
       - name: Generate audio
         run: |
           DATE=$(date +%Y-%m-%d)
+          echo "DATE=$DATE" >> $GITHUB_ENV
           python scripts/generate-audio.py $DATE
 
       - name: Commit and push audio
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add audio/$DATE.mp3
-          git diff --staged --quiet || git commit -m "Add audio for $DATE"
+          git add audio/${{ env.DATE }}.mp3
+          git diff --staged --quiet || git commit -m "Add audio for ${{ env.DATE }}"
           git push
