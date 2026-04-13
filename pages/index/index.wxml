@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="header">
+    <text class="title">60s 每日新闻</text>
+    <text class="date">{{currentDate}}</text>
+  </view>
+  
+  <view class="news-card" wx:if="{{newsData}}" bindtap="navigateToDetail">
+    <image class="cover" src="{{newsData.cover}}" mode="aspectFill" />
+    <view class="news-content">
+      <view class="news-list">
+        <view class="news-item" wx:for="{{newsData.news}}" wx:key="index">
+          <text class="news-index">{{index + 1}}</text>
+          <text class="news-text">{{item}}</text>
+        </view>
+      </view>
+      <view class="tip">
+        <text class="tip-text">{{newsData.tip}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="loading" wx:elif="{{loading}}">
+    <text>加载中...</text>
+  </view>
+  
+  <view class="error" wx:else>
+    <text>加载失败，请重试</text>
+    <button class="retry-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+  
+  <view class="footer">
+    <text class="footer-text">数据来源: 60s-static.viki.moe</text>
+  </view>
+</view>
