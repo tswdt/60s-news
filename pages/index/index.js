@@ -69,6 +69,12 @@ Page({
   initAudio(date) {
     console.log('初始化音频, 日期:', date);
     
+    // 如果已有音频上下文，先销毁
+    if (this.audioContext) {
+      this.audioContext.destroy();
+      this.audioContext = null;
+    }
+    
     // 创建音频上下文
     this.audioContext = wx.createInnerAudioContext();
     
@@ -79,19 +85,26 @@ Page({
     // 绑定事件监听器
     this.bindAudioEvents();
     
-    // 优先尝试从云存储加载
+    // 优先尝试从云存储加载（使用临时链接，避免缓存）
     this.loadAudioFromCloud(date);
   },
 
   loadAudioFromCloud(date) {
     console.log('尝试从云存储加载音频...');
     
-    // 尝试从小程序云存储获取
-    wx.cloud.downloadFile({
-      fileID: `cloud://w3221540766-1gipotvhc2ceb014.736f-w3221540766-1gipotvhc2ceb014-1250000000/audio/${date}.mp3`,
+    // 使用 getTempFileURL 获取临时链接（避免缓存问题）
+    wx.cloud.getTempFileURL({
+      fileList: [`cloud://w3221540766-1gipotvhc2ceb014.736f-w3221540766-1gipotvhc2ceb014-1250000000/audio/${date}.mp3`],
       success: (res) => {
-        console.log('从云存储获取音频成功:', res.tempFilePath);
-        this.audioContext.src = res.tempFilePath;
+        if (res.fileList && res.fileList[0] && res.fileList[0].tempFileURL) {
+          const audioUrl = res.fileList[0].tempFileURL;
+          console.log('从云存储获取音频URL成功:', audioUrl);
+          // 添加时间戳避免缓存
+          this.audioContext.src = audioUrl + '?t=' + Date.now();
+        } else {
+          console.log('云存储获取失败，尝试网络音频源');
+          this.tryLoadAudioFromNetwork(date, 0);
+        }
       },
       fail: (err) => {
         console.log('云存储获取失败:', err);
