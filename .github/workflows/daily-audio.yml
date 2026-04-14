@@ -21,22 +21,31 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install edge-tts moviepy
+          pip install edge-tts moviepy requests
 
-      - name: Generate audio with background music
+      - name: Generate audio
         run: |
           DATE=$(date +%Y-%m-%d)
           echo "DATE=$DATE" >> $GITHUB_ENV
           echo "开始生成音频，日期: $DATE"
-          python scripts/generate-audio-with-music.py || echo "音频生成失败"
-          echo "检查音频文件是否存在:"
-          ls -la audio/
+          python scripts/generate-audio-with-music.py
+          echo "检查音频文件:"
+          ls -lh audio/${DATE}.mp3
 
-      - name: Commit and push audio
+      - name: Upload to WeChat Cloud Storage
+        env:
+          WX_APPID: ${{ secrets.WX_APPID }}
+          WX_SECRET: ${{ secrets.WX_SECRET }}
+          WX_ENV: ${{ secrets.WX_ENV }}
+          DATE: ${{ env.DATE }}
+        run: |
+          echo "上传到微信小程序云存储..."
+          python scripts/upload-to-wechat-cloud.py
+
+      - name: Commit and push
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add audio/${{ env.DATE }}.mp3
-          git status
           git diff --staged --quiet || git commit -m "Add audio for ${{ env.DATE }}"
-          git push
+          git push || echo "Push failed, but audio is already in cloud storage"
