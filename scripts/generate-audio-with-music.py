@@ -41,7 +41,7 @@ def download_file(url, output_path):
 
 def add_background_music(voice_path, bg_music_path, output_path):
     from moviepy import AudioFileClip, CompositeAudioClip, concatenate_audioclips
-    import numpy as np
+    from moviepy.audio.fx import MultiplyVolume, AudioFadeOut
 
     print("加载语音文件...")
     voice_clip = AudioFileClip(voice_path)
@@ -63,11 +63,11 @@ def add_background_music(voice_path, bg_music_path, output_path):
     extended_bg = concatenate_audioclips(extended_bgs).subclipped(0, voice_duration + 3)
 
     # 音量调小（0.15 = 15%音量）
-    adjusted_bg = extended_bg.with_volume_scaled(0.15)
+    adjusted_bg = extended_bg.with_effects([MultiplyVolume(0.15)])
 
     # 在语音结束前3秒开始淡出
     fade_duration = 3  # 淡出3秒
-    adjusted_bg = adjusted_bg.fadeout(fade_duration)
+    adjusted_bg = adjusted_bg.with_effects([AudioFadeOut(fade_duration)])
 
     final_audio = CompositeAudioClip([voice_clip, adjusted_bg])
 
