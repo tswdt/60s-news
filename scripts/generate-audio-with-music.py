@@ -124,18 +124,15 @@ def generate_audio_with_music(date, text, bg_music_path=None):
         raise
 
 def main():
-    import urllib.request
     date = sys.argv[1] if len(sys.argv) > 1 else get_today_date()
     bg_music = sys.argv[2] if len(sys.argv) > 2 else None
 
     bg_music_path = None
     if bg_music:
         if bg_music.startswith("http://") or bg_music.startswith("https://"):
-            # 下载远程背景音乐
-            bg_music_path = os.path.join(os.path.dirname(__file__), "..", "audio", "bg_music_downloaded.mp3")
-            print(f"下载背景音乐: {bg_music}")
-            urllib.request.urlretrieve(bg_music, bg_music_path)
-            print(f"背景音乐已下载: {bg_music_path}")
+            print(f"下载远程背景音乐: {bg_music}")
+            bg_music_path = os.path.join(os.path.dirname(__file__), "..", "audio", "bg_music_temp.mp3")
+            download_file(bg_music, bg_music_path)
         elif bg_music.startswith("file://"):
             bg_music_path = bg_music[7:]
         elif os.path.isabs(bg_music):
@@ -143,12 +140,7 @@ def main():
         else:
             bg_music_path = os.path.join(os.path.dirname(__file__), "..", bg_music)
     else:
-        # 默认使用 GitHub 上的背景音乐
-        bg_music_url = "https://github.com/tswdt/60s-news/raw/main/audio/bg_music_new.mp3"
-        bg_music_path = os.path.join(os.path.dirname(__file__), "..", "audio", "bg_music_downloaded.mp3")
-        print(f"下载默认背景音乐: {bg_music_url}")
-        urllib.request.urlretrieve(bg_music_url, bg_music_path)
-        print(f"背景音乐已下载: {bg_music_path}")
+        bg_music_path = None
 
     print(f"正在获取 {date} 的新闻数据...")
 
