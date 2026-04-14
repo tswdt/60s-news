@@ -87,8 +87,8 @@ def generate_audio_with_music(date, text, bg_music_path=None):
         import asyncio
 
         async def main():
-            # 使用晓晓音色，可能更稳定
-            communicate = edge_tts.Communicate(text, "zh-CN-XiaoxiaoNeural")
+            # 使用云希音色，新闻播报风格
+            communicate = edge_tts.Communicate(text, "zh-CN-YunxiNeural")
             await communicate.save(temp_voice_path)
 
         asyncio.run(main())
