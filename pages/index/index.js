@@ -69,7 +69,8 @@ Page({
   initAudio(date) {
     this.audioContext = wx.createInnerAudioContext();
     const timestamp = Date.now();
-    const audioUrl = `https://cdn.jsdelivr.net/gh/tswdt/60s-news@main/audio/${date}.mp3?t=${timestamp}`;
+    // 使用 GitHub raw 链接避免 CDN 缓存
+    const audioUrl = `https://raw.githubusercontent.com/tswdt/60s-news/main/audio/${date}.mp3?t=${timestamp}`;
 
     this.audioContext.src = audioUrl;
 
