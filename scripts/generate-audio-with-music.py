@@ -67,7 +67,7 @@ def add_background_music(voice_path, bg_music_path, output_path):
 
     # 在语音结束前3秒开始淡出
     fade_duration = 3  # 淡出3秒
-    adjusted_bg = adjusted_bg.audio_fadeout(fade_duration)
+    adjusted_bg = adjusted_bg.fadeout(fade_duration)
 
     final_audio = CompositeAudioClip([voice_clip, adjusted_bg])
 
