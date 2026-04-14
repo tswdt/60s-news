@@ -28,7 +28,7 @@ jobs:
           DATE=$(date +%Y-%m-%d)
           echo "DATE=$DATE" >> $GITHUB_ENV
           echo "开始生成音频，日期: $DATE"
-          python scripts/generate-audio-with-music.py
+          python scripts/generate-audio-with-music.py $DATE audio/bg_music.mp3
           echo "检查音频文件:"
           ls -lh audio/${DATE}.mp3
 
