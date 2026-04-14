@@ -288,4 +288,6 @@
 /* 广告横幅 */
 .ad-section {
   margin-top: 20rpx;
+  position: relative;
+  z-index: 10;
 }
