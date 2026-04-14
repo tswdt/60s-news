@@ -62,8 +62,8 @@ def add_background_music(voice_path, bg_music_path, output_path):
         extended_bgs.append(bg_clip)
     extended_bg = concatenate_audioclips(extended_bgs).subclipped(0, voice_duration + 3)
 
-    # 音量调小（0.15 = 15%音量）
-    adjusted_bg = extended_bg.with_effects([MultiplyVolume(0.15)])
+    # 音量调小（0.045 = 4.5%音量，比原来减小70%）
+    adjusted_bg = extended_bg.with_effects([MultiplyVolume(0.045)])
 
     # 在语音结束前3秒开始淡出
     fade_duration = 3  # 淡出3秒
