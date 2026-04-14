@@ -115,9 +115,9 @@ Page({
   },
 
   audioSources: [
-    (date, timestamp) => `https://cdn.jsdelivr.net/gh/tswdt/60s-news@main/audio/${date}.mp3?t=${timestamp}`,
-    (date, timestamp) => `https://raw.githubusercontent.com/tswdt/60s-news/main/audio/${date}.mp3?t=${timestamp}`,
-    (date, timestamp) => `https://cdn.statically.io/gh/tswdt/60s-news/main/audio/${date}.mp3?t=${timestamp}`
+    (date, timestamp) => `https://raw.githubusercontent.com/tswdt/60s-news/main/audio/${date}.mp3?_=${timestamp}`,
+    (date, timestamp) => `https://cdn.jsdelivr.net/gh/tswdt/60s-news@main/audio/${date}.mp3?_=${timestamp}`,
+    (date, timestamp) => `https://cdn.statically.io/gh/tswdt/60s-news/main/audio/${date}.mp3?_=${timestamp}`
   ],
 
   currentAudioSourceIndex: 0,
