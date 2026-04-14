@@ -67,79 +67,156 @@ Page({
   },
 
   initAudio(date) {
+    console.log('初始化音频, 日期:', date);
+    
+    // 创建音频上下文
     this.audioContext = wx.createInnerAudioContext();
+    
+    // 解除静音限制
+    this.audioContext.obeyMuteSwitch = false;
+    this.audioContext.volume = 1.0;
+    
+    // 绑定事件监听器
+    this.bindAudioEvents();
+    
+    // 优先尝试从云存储加载
+    this.loadAudioFromCloud(date);
+  },
+
+  loadAudioFromCloud(date) {
+    console.log('尝试从云存储加载音频...');
+    
+    // 尝试从小程序云存储获取
+    wx.cloud.downloadFile({
+      fileID: `cloud://w3221540766-1gipotvhc2ceb014.736f-w3221540766-1gipotvhc2ceb014-1250000000/audio/${date}.mp3`,
+      success: (res) => {
+        console.log('从云存储获取音频成功:', res.tempFilePath);
+        this.audioContext.src = res.tempFilePath;
+      },
+      fail: (err) => {
+        console.log('云存储获取失败:', err);
+        // 如果云存储没有，尝试网络音频源
+        this.tryLoadAudioFromNetwork(date, 0);
+      }
+    });
+  },
+
+  audioSources: [
+    (date, timestamp) => `https://cdn.jsdelivr.net/gh/tswdt/60s-news@main/audio/${date}.mp3?t=${timestamp}`,
+    (date, timestamp) => `https://raw.githubusercontent.com/tswdt/60s-news/main/audio/${date}.mp3?t=${timestamp}`,
+    (date, timestamp) => `https://cdn.statically.io/gh/tswdt/60s-news/main/audio/${date}.mp3?t=${timestamp}`
+  ],
+
+  currentAudioSourceIndex: 0,
+
+  tryLoadAudioFromNetwork(date, sourceIndex) {
+    if (sourceIndex >= this.audioSources.length) {
+      console.error('所有音频源都失败了');
+      wx.showToast({
+        title: '音频暂不可用，请检查网络或联系管理员',
+        icon: 'none',
+        duration: 3000
+      });
+      return;
+    }
+
     const timestamp = Date.now();
-    // 使用 jsDelivr CDN 链接
-    const audioUrl = `https://cdn.jsdelivr.net/gh/tswdt/60s-news@main/audio/${date}.mp3?t=${timestamp}`;
-
+    const audioUrl = this.audioSources[sourceIndex](date, timestamp);
+    console.log(`尝试网络音频源 ${sourceIndex + 1}/${this.audioSources.length}:`, audioUrl);
+    
+    this.currentAudioSourceIndex = sourceIndex;
     this.audioContext.src = audioUrl;
+  },
 
+  bindAudioEvents() {
+    // 音频可以播放时
     this.audioContext.onCanplay(() => {
       console.log('音频可以播放');
-      // 使用 setTimeout 确保获取到正确的时长
       setTimeout(() => {
         const duration = this.audioContext.duration;
         console.log('音频时长:', duration);
         this.setData({
-          audioDuration: duration || 1 // 如果获取不到时长，默认设为1秒避免除以0
+          audioDuration: duration || 0
         });
-      }, 100);
+      }, 500);
     });
 
+    // 开始播放
     this.audioContext.onPlay(() => {
       console.log('开始播放');
       this.setData({ isPlaying: true });
     });
 
+    // 暂停播放
     this.audioContext.onPause(() => {
       console.log('暂停播放');
       this.setData({ isPlaying: false });
     });
 
+    // 停止播放
     this.audioContext.onStop(() => {
       console.log('停止播放');
       this.setData({ isPlaying: false, currentTime: 0 });
     });
 
+    // 播放结束
     this.audioContext.onEnded(() => {
       console.log('播放结束');
       this.setData({ isPlaying: false, currentTime: 0 });
     });
 
+    // 播放进度更新
     this.audioContext.onTimeUpdate(() => {
       this.setData({
         currentTime: this.audioContext.currentTime
       });
     });
 
+    // 播放错误
     this.audioContext.onError((err) => {
       console.error('音频播放错误:', err);
-      wx.showToast({
-        title: '音频加载失败',
-        icon: 'none'
-      });
+      
+      // 尝试下一个音频源
+      const date = this.getTodayDate();
+      const nextIndex = this.currentAudioSourceIndex + 1;
+      if (nextIndex < this.audioSources.length) {
+        console.log(`音频源 ${this.currentAudioSourceIndex + 1} 失败，尝试下一个...`);
+        this.tryLoadAudioFromNetwork(date, nextIndex);
+      } else {
+        wx.showToast({
+          title: '音频加载失败，请检查网络',
+          icon: 'none',
+          duration: 3000
+        });
+      }
     });
 
-    // 监听加载失败
+    // 加载中
     this.audioContext.onWaiting(() => {
       console.log('音频加载中...');
     });
   },
 
   playAudio() {
+    console.log('点击播放按钮, 当前状态:', this.data.isPlaying);
+    
     if (!this.audioContext) {
+      console.log('audioContext 不存在');
       return;
     }
 
     if (this.data.isPlaying) {
+      console.log('执行暂停');
       this.audioContext.pause();
     } else {
+      console.log('执行播放');
       this.audioContext.play();
     }
   },
 
   seekAudio(e) {
     const position = e.detail.value;
+    console.log('拖动到位置:', position);
     if (this.audioContext) {
       this.audioContext.seek(position);
     }

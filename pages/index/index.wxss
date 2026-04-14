@@ -164,16 +164,25 @@
 
 /* 进度条 */
 .progress-wrapper {
+  display: flex;
+  align-items: center;
   margin: 10rpx 0;
   position: relative;
   z-index: 2;
+  gap: 20rpx;
+}
+
+.time-text {
+  font-size: 24rpx;
+  color: #fff;
+  min-width: 70rpx;
+  text-align: center;
+  font-family: monospace;
 }
 
 .progress-slider {
-  width: 100%;
+  flex: 1;
   margin: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .progress-slider::before,
