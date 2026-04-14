@@ -65,8 +65,15 @@ def add_background_music(voice_path, bg_music_path, output_path):
     final_audio = CompositeAudioClip([voice_clip, adjusted_bg])
 
     print("导出音频...")
-    final_audio.write_audiofile(output_path, codec='mp3', bitrate='128k')
+    # 使用较低的比特率以减小文件大小（目标 < 2MB）
+    final_audio.write_audiofile(output_path, codec='mp3', bitrate='64k', fps=22050)
     print(f"已生成带背景音乐的音频: {output_path}")
+    
+    # 检查文件大小
+    file_size = os.path.getsize(output_path) / (1024 * 1024)  # MB
+    print(f"音频文件大小: {file_size:.2f} MB")
+    if file_size > 2:
+        print(f"警告：音频文件 ({file_size:.2f}MB) 超过 2MB 限制！")
 
 def generate_audio_with_music(date, text, bg_music_path=None):
     output_dir = os.path.join(os.path.dirname(__file__), "..", "audio")
@@ -80,7 +87,8 @@ def generate_audio_with_music(date, text, bg_music_path=None):
         import asyncio
 
         async def main():
-            communicate = edge_tts.Communicate(text, "zh-CN-YunyangNeural")
+            # 使用晓晓音色，可能更稳定
+            communicate = edge_tts.Communicate(text, "zh-CN-XiaoxiaoNeural")
             await communicate.save(temp_voice_path)
 
         asyncio.run(main())
