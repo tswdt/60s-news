@@ -17,8 +17,7 @@ def fetch_news(date):
 
 def format_text_for_speech(news_data):
     lines = [
-        f"今天是{news_data['date']}，",
-        "今天是每日60秒新闻时间。",
+        f"今天是{news_data['date']}，每日60秒新闻时间。",
         "请听今日新闻："
     ]
 
