@@ -1,39 +1,46 @@
 <view class="container">
-  <!-- 新闻图片 + 音频播放器悬浮 -->
-  <view class="cover-player-wrapper" wx:if="{{newsData}}">
-    <!-- 新闻图片 - 原项目风格完整展示 -->
-    <image class="news-image" src="{{newsData.image}}" mode="widthFix" />
-
-    <!-- 透明悬浮播放器 -->
-    <view class="player-overlay">
-      <!-- 播放控制区 -->
-      <view class="player-control">
-        <view class="control-left">
-          <view class="play-btn-large" bindtap="playAudio">
-            <text class="play-icon-large">{{isPlaying ? '⏸' : '▶'}}</text>
-          </view>
-        </view>
-        <view class="control-right">
-          <text class="duration-text">{{formatTime(currentTime)}} / {{formatTime(audioDuration)}}</text>
-        </view>
-      </view>
-
-      <!-- 进度条 -->
-      <view class="progress-wrapper">
-        <slider class="progress-slider" min="0" max="{{audioDuration}}" value="{{currentTime}}" block-size="12" activeColor="#ff6b6b" backgroundColor="rgba(255,255,255,0.3)" bindchange="seekAudio"/>
-      </view>
-
-      <!-- 音频波形动画 -->
-      <view class="waveform" wx:if="{{isPlaying}}">
-        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
-        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
-        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
-        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
-        <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+  <!-- 音频播放器 - 放在图片上方 -->
+  <view class="player-section" wx:if="{{newsData}}" style="background-image: url('{{backgroundImage}}'); background-size: cover; background-position: center;">
+    <!-- 顶部区域 - 早闻天下 -->
+    <view class="player-header">
+      <view class="header-left">
+        <view class="yellow-line"></view>
+        <view class="title-text">早闻天下</view>
+        <view class="subtitle-text">每天读报一分钟，知晓天下事</view>
       </view>
     </view>
 
+    <!-- 播放控制区 -->
+    <view class="player-control">
+      <view class="control-left">
+        <view class="play-btn" bindtap="playAudio">
+          <view wx:if="{{!isPlaying}}" class="play-icon"></view>
+          <view wx:else class="pause-icon">
+            <view class="pause-bar"></view>
+            <view class="pause-bar"></view>
+          </view>
+        </view>
+      </view>
+    </view>
 
+    <!-- 进度条 -->
+    <view class="progress-wrapper">
+      <slider class="progress-slider" min="0" max="{{audioDuration}}" value="{{currentTime}}" block-size="12" activeColor="#fff" backgroundColor="rgba(255,255,255,0.3)" bindchange="seekAudio"/>
+    </view>
+
+    <!-- 音频波形动画 -->
+    <view class="waveform" wx:if="{{isPlaying}}">
+      <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+      <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+      <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+      <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+      <view class="bar {{isPlaying ? 'active' : ''}}"></view>
+    </view>
+  </view>
+
+  <!-- 新闻图片 -->
+  <view class="news-image-wrapper" wx:if="{{newsData}}" bindtap="previewImage">
+    <image class="news-image" src="{{newsData.image}}" mode="widthFix" binderror="handleImageError" />
   </view>
 
   <view class="loading" wx:elif="{{loading}}">

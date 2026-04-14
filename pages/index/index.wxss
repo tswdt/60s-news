@@ -2,11 +2,98 @@
   padding: 20rpx;
   background-color: #f5f5f5;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
-/* 新闻图片 + 播放器包装器 */
-.cover-player-wrapper {
+/* 播放器区域 */
+.player-section {
+  width: 100%;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
   position: relative;
+  overflow: hidden;
+}
+
+.player-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* 播放器头部 */
+.player-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.yellow-line {
+  display: none;
+}
+
+.title-text {
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 0;
+  line-height: 1.1;
+  text-align: right;
+}
+
+.subtitle-text {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: 0;
+  margin-top: 15rpx;
+  text-align: right;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}
+
+.date-box {
+  padding: 15rpx 35rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-day {
+  font-size: 120rpx;
+  font-weight: bold;
+  color: #000;
+  line-height: 1;
+}
+
+.date-month {
+  font-size: 50rpx;
+  font-weight: bold;
+  color: #000;
+  line-height: 1;
+  margin-top: -20rpx;
+}
+
+/* 新闻图片包装器 */
+.news-image-wrapper {
   width: 100%;
   border-radius: 20rpx;
   overflow: hidden;
@@ -20,23 +107,14 @@
   display: block;
 }
 
-/* 透明悬浮播放器 */
-.player-overlay {
-  position: absolute;
-  top: 310rpx;
-  left: 0;
-  width: 100%;
-  padding: 30rpx;
-  z-index: 2;
-  box-sizing: border-box;
-}
-
 /* 播放控制区 */
 .player-control {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20rpx;
+  justify-content: flex-start;
+  margin-bottom: 10rpx;
+  position: relative;
+  z-index: 2;
 }
 
 .control-left {
@@ -44,26 +122,35 @@
   align-items: center;
 }
 
-.play-btn-large {
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
+.play-btn {
+  width: 80rpx;
+  height: 80rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4rpx 15rpx rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
-.play-btn-large:active {
-  transform: scale(0.95);
-  background: rgba(255, 255, 255, 1);
+.play-icon {
+  width: 0;
+  height: 0;
+  border-top: 24rpx solid transparent;
+  border-bottom: 24rpx solid transparent;
+  border-left: 40rpx solid #fff;
+  margin-left: 8rpx;
 }
 
-.play-icon-large {
-  font-size: 36rpx;
-  color: #333;
-  margin-left: 6rpx;
+.pause-icon {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.pause-bar {
+  width: 12rpx;
+  height: 48rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
 }
 
 .control-right {
@@ -72,12 +159,14 @@
 
 .duration-text {
   font-size: 22rpx;
-  color: rgba(255, 255, 255, 0.9);
+  color: #666;
 }
 
 /* 进度条 */
 .progress-wrapper {
-  margin: 15rpx 0;
+  margin: 10rpx 0;
+  position: relative;
+  z-index: 2;
 }
 
 .progress-slider {
@@ -91,13 +180,15 @@
   align-items: center;
   justify-content: center;
   height: 30rpx;
-  margin-top: 15rpx;
+  margin-top: 10rpx;
   gap: 6rpx;
+  position: relative;
+  z-index: 2;
 }
 
 .bar {
   width: 4rpx;
-  background: rgba(255, 255, 255, 0.6);
+  background: #fff;
   border-radius: 2rpx;
   animation: none;
 }
