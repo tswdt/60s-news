@@ -24,7 +24,7 @@ def format_text_for_speech(news_data):
 
     if "news" in news_data and isinstance(news_data["news"], list):
         for index, item in enumerate(news_data["news"]):
-            lines.append(f"第{index + 1}条，{item}")
+            lines.append(f"{index + 1}，{item}")
 
     if "tip" in news_data and news_data["tip"]:
         lines.append(f"今日金句：{news_data['tip']}")
@@ -40,7 +40,8 @@ def download_file(url, output_path):
     print(f"已下载: {output_path}")
 
 def add_background_music(voice_path, bg_music_path, output_path):
-    from moviepy import AudioFileClip, CompositeAudioClip
+    from moviepy import AudioFileClip, CompositeAudioClip, concatenate_audioclips
+    import numpy as np
 
     print("加载语音文件...")
     voice_clip = AudioFileClip(voice_path)
@@ -54,13 +55,19 @@ def add_background_music(voice_path, bg_music_path, output_path):
     print(f"语音长度: {voice_duration:.1f}秒")
     print(f"背景音乐长度: {bg_duration:.1f}秒")
 
-    loop_count = int(voice_duration / bg_duration) + 2
+    # 循环背景音乐以覆盖整个语音长度 + 3秒淡出时间
+    loop_count = int((voice_duration + 3) / bg_duration) + 2
     extended_bgs = []
     for i in range(loop_count):
         extended_bgs.append(bg_clip)
-    extended_bg = CompositeAudioClip(extended_bgs).subclipped(0, voice_duration)
+    extended_bg = concatenate_audioclips(extended_bgs).subclipped(0, voice_duration + 3)
 
-    adjusted_bg = extended_bg.with_volume_scaled(0.3)
+    # 音量调小（0.15 = 15%音量）
+    adjusted_bg = extended_bg.with_volume_scaled(0.15)
+
+    # 在语音结束前3秒开始淡出
+    fade_duration = 3  # 淡出3秒
+    adjusted_bg = adjusted_bg.audio_fadeout(fade_duration)
 
     final_audio = CompositeAudioClip([voice_clip, adjusted_bg])
 
@@ -68,7 +75,7 @@ def add_background_music(voice_path, bg_music_path, output_path):
     # 使用较低的比特率以减小文件大小（目标 < 2MB）
     final_audio.write_audiofile(output_path, codec='mp3', bitrate='64k', fps=22050)
     print(f"已生成带背景音乐的音频: {output_path}")
-    
+
     # 检查文件大小
     file_size = os.path.getsize(output_path) / (1024 * 1024)  # MB
     print(f"音频文件大小: {file_size:.2f} MB")
@@ -128,6 +135,9 @@ def main():
             bg_music_path = bg_music
         else:
             bg_music_path = os.path.join(os.path.dirname(__file__), "..", bg_music)
+    else:
+        # 默认使用新的背景音乐
+        bg_music_path = os.path.join(os.path.dirname(__file__), "..", "audio", "bg_music_new.mp3")
 
     print(f"正在获取 {date} 的新闻数据...")
 
