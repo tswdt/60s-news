@@ -1,5 +1,5 @@
 <view class="container">
-  <!-- 音频播放器 - 放在图片上方 -->
+  <!-- 音频播放器 -->
   <view class="player-section" wx:if="{{newsData}}" style="background-image: url('{{backgroundImage}}'); background-size: cover; background-position: center;">
     <!-- 顶部区域 - 早闻天下 -->
     <view class="player-header">
@@ -40,15 +40,20 @@
     </view>
   </view>
 
-  <!-- 新闻图片 -->
-  <view class="news-image-wrapper" wx:if="{{newsData}}">
-    <image class="news-image" src="{{newsData.image}}" mode="widthFix" binderror="handleImageError" />
+  <!-- 新闻文字列表 -->
+  <view class="news-section" wx:if="{{newsData && newsData.news.length > 0}}">
+    <view class="news-item" wx:for="{{newsData.news}}" wx:key="index">
+      <text class="news-index">{{index + 1}}</text>
+      <text class="news-content">{{item}}</text>
+    </view>
   </view>
 
+  <!-- 加载中 -->
   <view class="loading" wx:elif="{{loading}}">
     <text>加载中...</text>
   </view>
 
+  <!-- 加载失败 -->
   <view class="error" wx:else>
     <text>加载失败，请重试</text>
     <button class="retry-btn" bindtap="handleRetry">重新加载</button>
