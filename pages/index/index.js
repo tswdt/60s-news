@@ -120,17 +120,9 @@ Page({
       });
     });
 
-    // 监听加载状态
+    // 监听加载失败
     this.audioContext.onWaiting(() => {
       console.log('音频加载中...');
-    });
-
-    this.audioContext.onSeeking(() => {
-      console.log('音频跳转中...');
-    });
-
-    this.audioContext.onSeeked(() => {
-      console.log('音频跳转完成');
     });
   },
 
