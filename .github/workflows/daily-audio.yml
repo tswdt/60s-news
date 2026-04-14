@@ -41,11 +41,3 @@ jobs:
         run: |
           echo "上传到微信小程序云存储..."
           python scripts/upload-to-wechat-cloud.py
-
-      - name: Commit and push
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add audio/${{ env.DATE }}.mp3
-          git diff --staged --quiet || git commit -m "Add audio for ${{ env.DATE }}"
-          git push || echo "Push failed, but audio is already in cloud storage"
