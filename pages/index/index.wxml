@@ -25,7 +25,7 @@
 
     <!-- 进度条 -->
     <view class="progress-wrapper">
-      <slider class="progress-slider" min="0" max="{{audioDuration}}" value="{{currentTime}}" block-size="12" activeColor="#fff" backgroundColor="rgba(255,255,255,0.3)" bindchange="seekAudio"/>
+      <slider class="progress-slider" min="0" max="{{audioDuration}}" value="{{currentTime}}" block-size="24" activeColor="#fff" backgroundColor="rgba(255,255,255,0.3)" bindchange="seekAudio"/>
     </view>
 
     <!-- 音频波形动画 -->
@@ -39,7 +39,7 @@
   </view>
 
   <!-- 新闻图片 -->
-  <view class="news-image-wrapper" wx:if="{{newsData}}" bindtap="previewImage">
+  <view class="news-image-wrapper" wx:if="{{newsData}}">
     <image class="news-image" src="{{newsData.image}}" mode="widthFix" binderror="handleImageError" />
   </view>
 

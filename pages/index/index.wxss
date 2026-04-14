@@ -172,6 +172,13 @@
 .progress-slider {
   width: 100%;
   margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.progress-slider::before,
+.progress-slider::after {
+  display: none;
 }
 
 /* 波形动画 */
