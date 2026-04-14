@@ -59,6 +59,11 @@
     <button class="retry-btn" bindtap="handleRetry">重新加载</button>
   </view>
 
+  <!-- 广告横幅 -->
+  <view class="ad-section">
+    <ad unit-id="adunit-a16cd1675ab4e808"></ad>
+  </view>
+
   <view class="footer">
     <text class="footer-text">数据来源: 60s-static.viki.moe</text>
   </view>

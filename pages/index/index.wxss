@@ -284,3 +284,8 @@
   color: #999;
   margin-top: 20rpx;
 }
+
+/* 广告横幅 */
+.ad-section {
+  margin-top: 20rpx;
+}
