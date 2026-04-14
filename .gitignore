@@ -13,3 +13,6 @@ cloudbaserc/**/*.json
 
 # 测试音频
 audio/test_*.mp3
+
+# 背景音乐
+# audio/bg_music.mp3
