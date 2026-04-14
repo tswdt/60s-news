@@ -76,9 +76,14 @@ Page({
 
     this.audioContext.onCanplay(() => {
       console.log('音频可以播放');
-      this.setData({
-        audioDuration: this.audioContext.duration
-      });
+      // 使用 setTimeout 确保获取到正确的时长
+      setTimeout(() => {
+        const duration = this.audioContext.duration;
+        console.log('音频时长:', duration);
+        this.setData({
+          audioDuration: duration || 1 // 如果获取不到时长，默认设为1秒避免除以0
+        });
+      }, 100);
     });
 
     this.audioContext.onPlay(() => {
