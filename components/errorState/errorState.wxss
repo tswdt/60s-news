@@ -1,0 +1,54 @@
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 40rpx;
+}
+
+.error-icon-wrap {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: #FFF0E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+}
+
+.error-icon {
+  font-size: 56rpx;
+}
+
+.error-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #3A1F14;
+  margin-bottom: 8rpx;
+}
+
+.error-desc {
+  font-size: 26rpx;
+  color: #8B7355;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.error-action {
+  background: linear-gradient(135deg, #FF9A5C, #FF7A45);
+  padding: 16rpx 48rpx;
+  border-radius: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(255, 122, 69, 0.25);
+}
+
+.error-action:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.error-action-text {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+}

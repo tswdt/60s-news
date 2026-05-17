@@ -1,0 +1,58 @@
+<view class="page-container">
+  <view class="page-content">
+    <view class="poster-header">
+      <text class="poster-title">分享海报</text>
+      <text class="poster-tip">长按海报保存，对好友炫耀一下吧！</text>
+    </view>
+
+    <view class="poster-preview">
+      <view class="poster-card" id="posterCard">
+        <view class="card-main-title">
+          <text class="main-title-text">{{headline}}</text>
+        </view>
+        <view class="card-sub-title">
+          <text class="sub-title-text">我不服，你来。</text>
+        </view>
+
+        <view class="vs-section">
+          <view class="vs-player vs-left">
+            <view class="vs-avatar avatar-self">
+              <text class="vs-emoji">🧑</text>
+            </view>
+            <text class="vs-name">我</text>
+            <text class="vs-score score-self">{{selfScore}}分</text>
+            <text class="vs-level level-self">{{selfLevel}}</text>
+          </view>
+
+          <view class="vs-divider">
+            <text class="vs-text">VS</text>
+          </view>
+
+          <view class="vs-player vs-right">
+            <view class="vs-avatar avatar-friend">
+              <text class="vs-emoji">🧑</text>
+            </view>
+            <text class="vs-name">TA</text>
+            <text class="vs-score score-friend">{{friendScore}}分</text>
+            <text class="vs-level level-friend">{{friendLevel}}</text>
+          </view>
+        </view>
+
+        <view class="card-verdict">
+          <text class="verdict-text">{{verdict}}</text>
+        </view>
+
+        <view class="card-footer">
+          <text class="footer-app">谁才是老登</text>
+          <text class="footer-slogan">6大维度鉴定老登指数，快来测测你俩谁更老登！</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-footer">
+    <action-button text="保存分享图" type="primary" bind:tap="onSavePoster"></action-button>
+    <action-button text="发送给好友" type="secondary" bind:tap="onShare"></action-button>
+    <action-button text="换一句文案试试" type="ghost" bind:tap="onChangeHeadline"></action-button>
+  </view>
+</view>

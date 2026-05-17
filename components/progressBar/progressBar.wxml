@@ -1,0 +1,11 @@
+<view class="progress-bar-wrap">
+  <view class="progress-left">
+    <text class="progress-text">第 {{current}}/{{total}} 题</text>
+  </view>
+  <view class="progress-track">
+    <view class="progress-fill" style="width: {{computedPercent}}%"></view>
+  </view>
+  <view class="progress-right">
+    <text class="progress-status">测试中</text>
+  </view>
+</view>

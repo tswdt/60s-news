@@ -1,0 +1,12 @@
+<view class="avatar-block">
+  <view class="avatar-wrap {{size === 'large' ? 'avatar-large' : 'avatar-default'}}">
+    <view wx:if="{{!avatar}}" class="avatar-placeholder">
+      <text class="placeholder-emoji">🧑</text>
+    </view>
+    <image wx:else class="avatar-img" src="{{avatar}}" mode="aspectFill"></image>
+    <view wx:if="{{badge}}" class="avatar-badge">
+      <text class="badge-text">{{badge}}</text>
+    </view>
+  </view>
+  <text wx:if="{{nickname}}" class="avatar-nickname">{{nickname}}</text>
+</view>

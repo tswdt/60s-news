@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "action-button": "/components/actionButton/actionButton"
+  },
+  "navigationBarTitleText": "老登排行榜",
+  "navigationBarBackgroundColor": "#FFF7F0",
+  "navigationBarTextStyle": "black"
+}

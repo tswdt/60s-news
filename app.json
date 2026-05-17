@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/quiz/quiz",
+    "pages/halfResult/halfResult",
+    "pages/friendEntry/friendEntry",
+    "pages/duelResult/duelResult",
+    "pages/threePlayerResult/threePlayerResult",
+    "pages/sharePoster/sharePoster"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFF7F0",
+    "navigationBarTitleText": "谁才是老登",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FFF7F0",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

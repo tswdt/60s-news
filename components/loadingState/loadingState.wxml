@@ -1,0 +1,8 @@
+<view class="loading-state">
+  <view class="loading-spinner">
+    <view class="spinner-dot dot-1"></view>
+    <view class="spinner-dot dot-2"></view>
+    <view class="spinner-dot dot-3"></view>
+  </view>
+  <text class="loading-text">{{text}}</text>
+</view>

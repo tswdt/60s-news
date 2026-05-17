@@ -1,0 +1,4 @@
+<view class="action-btn action-btn-{{type}} {{full ? 'action-btn-full' : ''}} {{disabled ? 'action-btn-disabled' : ''}}" bindtap="onTap">
+  <image wx:if="{{icon}}" class="action-btn-icon" src="{{icon}}" mode="aspectFit"></image>
+  <text class="action-btn-text action-btn-text-{{type}}">{{text}}</text>
+</view>

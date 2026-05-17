@@ -1,0 +1,75 @@
+<view class="page-container">
+  <view class="page-content">
+    <view class="result-header">
+      <text class="result-title">你的<text class="highlight">老登味</text>档案已生成</text>
+    </view>
+
+    <view class="score-card">
+      <view class="score-left">
+        <image class="hero-img" src="/assets/images/home-hero.png" mode="aspectFit"></image>
+      </view>
+      <view class="score-right">
+        <view class="ring-wrap">
+          <view class="ring-bg"></view>
+          <view class="ring-fill" style="transform: rotate({{ringRotate}}deg)"></view>
+          <view class="ring-inner">
+            <text class="ring-label">老登味</text>
+            <text class="ring-value">{{percentage}}%</text>
+          </view>
+        </view>
+        <view class="level-tag">
+          <text class="level-emoji">{{levelEmoji}}</text>
+          <text class="level-name">{{level}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="features-section">
+      <text class="section-title">你的 3 大老登味特征</text>
+      <view class="feature-list">
+        <view class="feature-item" wx:for="{{features}}" wx:key="name">
+          <view class="feature-icon" style="background: {{item.bgColor}}">
+            <text class="feature-emoji">{{item.icon}}</text>
+          </view>
+          <view class="feature-info">
+            <view class="feature-header">
+              <text class="feature-name">{{item.name}}</text>
+              <text class="feature-level" style="color: {{item.color}}">{{item.level}}</text>
+            </view>
+            <view class="feature-bar">
+              <view class="feature-bar-fill" style="width: {{item.percent}}%; background: {{item.color}}"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="invite-card">
+      <view class="invite-top">
+        <text class="invite-icon">⚔️</text>
+      </view>
+      <view class="invite-content">
+        <text class="invite-text">一个人只能测出老登味</text>
+        <text class="invite-text">两个人才能判断<text class="highlight">谁才是本局老登</text></text>
+      </view>
+      <view class="invite-figures">
+        <view class="invite-person">
+          <text class="invite-bubble">我才不是！</text>
+          <text class="invite-emoji">🧑</text>
+        </view>
+        <text class="invite-vs">VS</text>
+        <view class="invite-person">
+          <text class="invite-bubble">你才老登！</text>
+          <text class="invite-emoji">🧑</text>
+        </view>
+      </view>
+      <text class="invite-hint">快拉上好友，来一局终极判定吧！</text>
+    </view>
+  </view>
+
+  <view class="page-footer">
+    <action-button text="拉朋友进局" type="primary" bind:tap="onInviteFriend"></action-button>
+    <action-button text="先看简版结果" type="secondary" bind:tap="onViewBrief"></action-button>
+    <text class="disclaimer">结果仅供娱乐，别太当真哦~</text>
+  </view>
+</view>

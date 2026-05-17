@@ -1,0 +1,40 @@
+.progress-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  width: 100%;
+}
+
+.progress-left {
+  flex-shrink: 0;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #8B7355;
+}
+
+.progress-track {
+  flex: 1;
+  height: 12rpx;
+  background: #FFE3D8;
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #FF7A45;
+  border-radius: 999rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-right {
+  flex-shrink: 0;
+}
+
+.progress-status {
+  font-size: 24rpx;
+  color: #FF7A45;
+  font-weight: 600;
+}

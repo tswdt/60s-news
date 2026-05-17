@@ -1,0 +1,78 @@
+<view class="page-container">
+  <view class="page-content">
+    <view class="title-section">
+      <text class="main-title">谁才是<text class="highlight">老登</text></text>
+      <text class="sub-title">测测你们之间谁最有老登味</text>
+      <text class="desc-text">老登不看年龄，看的是一种熟悉的味道。</text>
+    </view>
+
+    <view class="illustration-section">
+      <view class="illustration-box">
+        <view class="speech-bubble left">
+          <text class="bubble-text">我当年啊...</text>
+        </view>
+        <view class="speech-bubble right">
+          <text class="bubble-text">你听我说！</text>
+        </view>
+        <view class="center-figure">
+          <view class="figure-circle">
+            <text class="figure-emoji">👴</text>
+          </view>
+        </view>
+        <view class="side-figure left-figure">
+          <text class="figure-emoji-small">🧑</text>
+        </view>
+        <view class="side-figure right-figure">
+          <text class="figure-emoji-small">👩</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-section">
+      <action-button text="开始鉴定" type="primary" bind:tap="onStartQuiz"></action-button>
+      <action-button text="拉朋友进局" type="secondary" bind:tap="onInviteFriend"></action-button>
+    </view>
+
+    <view class="dimension-section">
+      <text class="dimension-title">6大老登维度，全面鉴定</text>
+      <view class="dimension-grid">
+        <view class="dimension-item">
+          <view class="dimension-icon" style="background: #FFF0E6;">
+            <text class="dimension-emoji">👴</text>
+          </view>
+          <text class="dimension-label">长辈感</text>
+        </view>
+        <view class="dimension-item">
+          <view class="dimension-icon" style="background: #E8F4FD;">
+            <text class="dimension-emoji">☕</text>
+          </view>
+          <text class="dimension-label">端着感</text>
+        </view>
+        <view class="dimension-item">
+          <view class="dimension-icon" style="background: #FFF8E1;">
+            <text class="dimension-emoji">👑</text>
+          </view>
+          <text class="dimension-label">懂王感</text>
+        </view>
+        <view class="dimension-item">
+          <view class="dimension-icon" style="background: #F3E8FF;">
+            <text class="dimension-emoji">🎤</text>
+          </view>
+          <text class="dimension-label">冷场感</text>
+        </view>
+        <view class="dimension-item">
+          <view class="dimension-icon" style="background: #E8F5E9;">
+            <text class="dimension-emoji">🏅</text>
+          </view>
+          <text class="dimension-label">资历感</text>
+        </view>
+        <view class="dimension-item">
+          <view class="dimension-icon" style="background: #E3F2FD;">
+            <text class="dimension-emoji">📢</text>
+          </view>
+          <text class="dimension-label">指挥感</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

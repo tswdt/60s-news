@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "action-button": "/components/actionButton/actionButton"
+  },
+  "navigationBarTitleText": "分享判定图",
+  "navigationBarBackgroundColor": "#FFF7F0",
+  "navigationBarTextStyle": "black"
+}

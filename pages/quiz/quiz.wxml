@@ -1,0 +1,47 @@
+<view class="page-container">
+  <view class="quiz-header">
+    <text class="progress-text">第 <text class="progress-current">{{currentIndex + 1}}</text>/{{questions.length}} 题</text>
+    <view class="progress-bar-wrap">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+      </view>
+    </view>
+    <view class="status-badge">
+      <text class="status-text">测试中</text>
+    </view>
+  </view>
+
+  <view class="question-card">
+    <view class="question-badge">
+      <text class="badge-text">老登味检测中</text>
+    </view>
+    <view class="question-body">
+      <text class="question-text">{{currentQuestion.question}}</text>
+    </view>
+    <view class="question-deco">
+      <text class="deco-emoji">{{currentQuestion.emoji}}</text>
+    </view>
+  </view>
+
+  <view class="options-section">
+    <view
+      wx:for="{{currentQuestion.options}}"
+      wx:key="label"
+      class="option-btn {{selectedIndex === index ? 'selected' : ''}} {{tappingIndex === index ? 'tapping' : ''}}"
+      bindtap="onSelectOption"
+      data-index="{{index}}"
+    >
+      <view class="option-label-circle {{selectedIndex === index ? 'selected-circle' : ''}}">
+        <text class="option-label">{{item.label}}</text>
+      </view>
+      <text class="option-text">{{item.text}}</text>
+      <view class="option-check" wx:if="{{selectedIndex === index}}">
+        <text class="check-icon">✓</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="quiz-bottom-hint">
+    <text class="hint-text">基于6大维度进行判断</text>
+  </view>
+</view>

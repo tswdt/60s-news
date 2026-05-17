@@ -1,0 +1,240 @@
+.page-container {
+  min-height: 100vh;
+  background-color: #FFF7F0;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+  padding: 32rpx;
+  padding-top: 24rpx;
+}
+
+.result-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28rpx;
+}
+
+.result-title {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #3A1F14;
+  margin-bottom: 12rpx;
+}
+
+.result-title .highlight {
+  color: #FF7A45;
+}
+
+.result-banner {
+  background: linear-gradient(135deg, #FF9A5C, #FF7A45);
+  padding: 10rpx 32rpx;
+  border-radius: 24rpx;
+}
+
+.banner-text {
+  font-size: 24rpx;
+  color: #FFFFFF;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+
+.cards-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 28rpx;
+}
+
+.player-card {
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  padding: 28rpx 28rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 3rpx solid transparent;
+  box-shadow: 0 4rpx 16rpx rgba(58, 31, 20, 0.06);
+}
+
+.player-card.card-gold {
+  border-color: #FFB347;
+  background: linear-gradient(135deg, #FFF8EE, #FFF0DC);
+  box-shadow: 0 6rpx 24rpx rgba(255, 179, 71, 0.2);
+}
+
+.player-card.card-blue {
+  border-color: #7EB8E0;
+  background: linear-gradient(135deg, #F5FAFD, #EBF4FA);
+  box-shadow: 0 4rpx 16rpx rgba(91, 155, 213, 0.12);
+}
+
+.player-card.card-purple {
+  border-color: #C49BDB;
+  background: linear-gradient(135deg, #FBF5FF, #F5ECFA);
+  box-shadow: 0 4rpx 16rpx rgba(155, 89, 182, 0.12);
+}
+
+.card-crown {
+  position: absolute;
+  top: -20rpx;
+  left: 28rpx;
+  font-size: 36rpx;
+  filter: drop-shadow(0 2rpx 6rpx rgba(255, 165, 0, 0.4));
+}
+
+.card-rank-badge {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.gold-badge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.blue-badge {
+  background: linear-gradient(135deg, #7EB8E0, #5B9BD5);
+}
+
+.purple-badge {
+  background: linear-gradient(135deg, #C49BDB, #9B59B6);
+}
+
+.card-rank-badge text {
+  font-size: 24rpx;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.card-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.avatar-gold {
+  background: linear-gradient(135deg, #FFE8D6, #FFD4B8);
+  box-shadow: 0 4rpx 12rpx rgba(255, 179, 71, 0.25);
+}
+
+.avatar-blue {
+  background: linear-gradient(135deg, #E8F4FD, #D4ECFA);
+  box-shadow: 0 4rpx 12rpx rgba(91, 155, 213, 0.2);
+}
+
+.avatar-purple {
+  background: linear-gradient(135deg, #F3E8FF, #E8D5F5);
+  box-shadow: 0 4rpx 12rpx rgba(155, 89, 182, 0.2);
+}
+
+.avatar-emoji {
+  font-size: 40rpx;
+}
+
+.card-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #3A1F14;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.card-identity {
+  padding: 6rpx 18rpx;
+  border-radius: 16rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.identity-gold {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.identity-blue {
+  background: linear-gradient(135deg, #7EB8E0, #5B9BD5);
+}
+
+.identity-purple {
+  background: linear-gradient(135deg, #C49BDB, #9B59B6);
+}
+
+.identity-text {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+}
+
+.card-feature {
+  font-size: 24rpx;
+  color: #8B7355;
+  flex: 1;
+}
+
+.card-score {
+  font-size: 36rpx;
+  font-weight: 900;
+  color: #FF7A45;
+  flex-shrink: 0;
+}
+
+.score-blue {
+  color: #5B9BD5;
+}
+
+.score-purple {
+  color: #9B59B6;
+}
+
+.verdict-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 28rpx 32rpx;
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(58, 31, 20, 0.04);
+  border-left: 6rpx solid #FF7A45;
+}
+
+.verdict-icon {
+  font-size: 36rpx;
+  flex-shrink: 0;
+  margin-top: 2rpx;
+}
+
+.verdict-text {
+  font-size: 28rpx;
+  color: #3A1F14;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.page-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  padding: 24rpx 32rpx;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+}
+
+.disclaimer {
+  font-size: 22rpx;
+  color: #B8A08A;
+  margin-top: 4rpx;
+}

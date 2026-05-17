@@ -1,0 +1,5 @@
+<view class="trait-tag trait-tag-{{color}}">
+  <image wx:if="{{icon}}" class="tag-icon" src="{{icon}}" mode="aspectFit"></image>
+  <text class="tag-name">{{name}}</text>
+  <text wx:if="{{level}}" class="tag-level">{{level}}</text>
+</view>

@@ -1,0 +1,61 @@
+<view class="page-container">
+  <view class="page-content">
+    <view class="result-header">
+      <text class="result-title">本局<text class="highlight">老登</text>已出现</text>
+    </view>
+
+    <view class="winner-banner">
+      <text class="banner-crown">👑</text>
+      <text class="banner-text">本局老登：{{winnerLabel}}</text>
+    </view>
+
+    <view class="battle-section">
+      <view class="player-card {{playerA.isWinner ? 'card-winner' : 'card-loser'}}">
+        <view class="card-crown" wx:if="{{playerA.isWinner}}">👑</view>
+        <view class="player-avatar {{playerA.isWinner ? 'avatar-winner' : 'avatar-loser'}}">
+          <image class="avatar-img" src="/assets/images/home-hero.png" mode="aspectFit" wx:if="{{playerA.isSelf}}"></image>
+          <text class="avatar-emoji" wx:else>🧑</text>
+        </view>
+        <text class="player-name">{{playerA.name}}</text>
+        <text class="player-score" style="color: {{playerA.isWinner ? '#FF7A45' : '#5B9BD5'}}">{{playerA.percentage}}%</text>
+        <text class="player-level">{{playerA.level}}</text>
+      </view>
+
+      <view class="vs-block">
+        <text class="vs-text">VS</text>
+      </view>
+
+      <view class="player-card {{playerB.isWinner ? 'card-winner' : 'card-loser'}}">
+        <view class="card-crown" wx:if="{{playerB.isWinner}}">👑</view>
+        <view class="player-avatar {{playerB.isWinner ? 'avatar-winner' : 'avatar-loser'}}">
+          <image class="avatar-img" src="/assets/images/home-hero.png" mode="aspectFit" wx:if="{{playerB.isSelf}}"></image>
+          <text class="avatar-emoji" wx:else>🧑</text>
+        </view>
+        <text class="player-name">{{playerB.name}}</text>
+        <text class="player-score" style="color: {{playerB.isWinner ? '#FF7A45' : '#5B9BD5'}}">{{playerB.percentage}}%</text>
+        <text class="player-level">{{playerB.level}}</text>
+      </view>
+    </view>
+
+    <view class="features-section">
+      <text class="section-title">老登特征</text>
+      <view class="feature-tags">
+        <view class="feature-tag" wx:for="{{winnerFeatures}}" wx:key="text" style="background: {{item.bgColor}}">
+          <text class="tag-emoji">{{item.icon}}</text>
+          <text class="tag-text">{{item.text}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="comment-card">
+      <text class="comment-text">{{verdict}}</text>
+    </view>
+  </view>
+
+  <view class="page-footer">
+    <action-button text="再拉一个人" type="primary" bind:tap="onInviteAnother"></action-button>
+    <action-button text="生成判定图" type="secondary" bind:tap="onGenerateImage"></action-button>
+    <action-button text="重新开一局" type="tertiary" bind:tap="onRestart"></action-button>
+    <text class="disclaimer">仅供娱乐，别太当真</text>
+  </view>
+</view>

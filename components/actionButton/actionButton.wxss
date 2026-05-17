@@ -1,0 +1,67 @@
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  border-radius: 44rpx;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.action-btn:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+.action-btn-full {
+  width: 100%;
+}
+
+.action-btn-primary {
+  background: linear-gradient(135deg, #FF7A45 0%, #FF4D2E 100%);
+  box-shadow: 0 6rpx 20rpx rgba(255, 77, 46, 0.3);
+}
+
+.action-btn-secondary {
+  background: #FFFFFF;
+  border: 2rpx solid #FF7A45;
+  box-shadow: 0 2rpx 8rpx rgba(255, 122, 69, 0.08);
+}
+
+.action-btn-ghost {
+  background: #F5F5F5;
+  border: 1rpx solid #E0E0E0;
+}
+
+.action-btn-disabled {
+  background: #E0E0E0;
+  border-color: #E0E0E0;
+  pointer-events: none;
+}
+
+.action-btn-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+}
+
+.action-btn-text {
+  font-weight: 700;
+  font-size: 30rpx;
+}
+
+.action-btn-text-primary {
+  color: #FFFFFF;
+}
+
+.action-btn-text-secondary {
+  color: #FF7A45;
+}
+
+.action-btn-text-ghost {
+  color: #666666;
+}
+
+.action-btn-text-disabled {
+  color: #999999;
+}

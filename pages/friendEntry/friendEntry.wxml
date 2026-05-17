@@ -1,0 +1,69 @@
+<view class="page-container">
+  <view class="page-content" wx:if="{{!errorState}}">
+    <view class="entry-header">
+      <text class="entry-title">你被拉入<text class="highlight">老登局</text></text>
+      <view class="entry-capsule">
+        <text class="capsule-text">一场关于"老登"身份的较量</text>
+      </view>
+    </view>
+
+    <view class="explain-card">
+      <view class="explain-line">
+        <text class="explain-dot">⚡</text>
+        <text class="explain-text">对方正在试图证明自己不是老登。</text>
+      </view>
+      <view class="explain-line">
+        <text class="explain-dot">🔓</text>
+        <text class="explain-text">你测完后，双方结果同时公开。</text>
+      </view>
+    </view>
+
+    <view class="versus-card">
+      <view class="versus-player">
+        <view class="versus-avatar left">
+          <image class="versus-img" src="/assets/images/home-hero.png" mode="aspectFit"></image>
+        </view>
+        <text class="versus-name">对方</text>
+        <view class="versus-badge done">
+          <text class="badge-text">已测完</text>
+        </view>
+      </view>
+      <view class="versus-center">
+        <text class="versus-vs">VS</text>
+      </view>
+      <view class="versus-player">
+        <view class="versus-avatar right">
+          <text class="versus-emoji">🧑</text>
+        </view>
+        <text class="versus-name">你</text>
+        <view class="versus-badge waiting">
+          <text class="badge-text">待应战</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="dimensions-section">
+      <text class="dim-title">六大维度全面鉴定</text>
+      <view class="dim-grid">
+        <view class="dim-card" wx:for="{{dimensions}}" wx:key="key">
+          <image class="dim-icon" src="{{item.iconPath}}" mode="aspectFit"></image>
+          <text class="dim-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-content error-content" wx:if="{{errorState}}">
+    <view class="error-block">
+      <text class="error-emoji">😵</text>
+      <text class="error-title">邀请链接无效</text>
+      <text class="error-desc">该链接可能已过期或格式错误</text>
+    </view>
+    <action-button text="回到首页" type="primary" bind:tap="onGoHome"></action-button>
+  </view>
+
+  <view class="page-footer" wx:if="{{!errorState}}">
+    <action-button text="开始应战" type="primary" bind:tap="onStartChallenge"></action-button>
+    <text class="footer-note">仅供娱乐，别太当真</text>
+  </view>
+</view>

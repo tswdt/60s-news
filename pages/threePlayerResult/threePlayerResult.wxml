@@ -1,0 +1,63 @@
+<view class="page-container">
+  <view class="page-content">
+    <view class="result-header">
+      <text class="result-title">三人<text class="highlight">老登局</text>结果</text>
+      <view class="result-banner">
+        <text class="banner-text">各显神通，老登出圈！</text>
+      </view>
+    </view>
+
+    <view class="cards-section">
+      <view class="player-card card-gold" wx:if="{{players.length > 0}}">
+        <view class="card-crown">👑</view>
+        <view class="card-rank-badge gold-badge">1</view>
+        <view class="card-avatar avatar-gold">
+          <text class="avatar-emoji">🧑</text>
+        </view>
+        <text class="card-name">{{players[0].name}}</text>
+        <view class="card-identity identity-gold">
+          <text class="identity-text">本局老登</text>
+        </view>
+        <text class="card-feature">{{players[0].feature}}</text>
+        <text class="card-score">{{players[0].percentage}}%</text>
+      </view>
+
+      <view class="player-card card-blue" wx:if="{{players.length > 1}}">
+        <view class="card-rank-badge blue-badge">2</view>
+        <view class="card-avatar avatar-blue">
+          <text class="avatar-emoji">🧑</text>
+        </view>
+        <text class="card-name">{{players[1].name}}</text>
+        <view class="card-identity identity-blue">
+          <text class="identity-text">{{players[1].identity}}</text>
+        </view>
+        <text class="card-feature">{{players[1].feature}}</text>
+        <text class="card-score score-blue">{{players[1].percentage}}%</text>
+      </view>
+
+      <view class="player-card card-purple" wx:if="{{players.length > 2}}">
+        <view class="card-rank-badge purple-badge">3</view>
+        <view class="card-avatar avatar-purple">
+          <text class="avatar-emoji">🧑</text>
+        </view>
+        <text class="card-name">{{players[2].name}}</text>
+        <view class="card-identity identity-purple">
+          <text class="identity-text">{{players[2].identity}}</text>
+        </view>
+        <text class="card-feature">{{players[2].feature}}</text>
+        <text class="card-score score-purple">{{players[2].percentage}}%</text>
+      </view>
+    </view>
+
+    <view class="verdict-card">
+      <text class="verdict-icon">🎭</text>
+      <text class="verdict-text">{{verdict}}</text>
+    </view>
+  </view>
+
+  <view class="page-footer">
+    <action-button text="生成三人判定图" type="primary" bind:tap="onGenerateImage"></action-button>
+    <action-button text="重新开一局" type="secondary" bind:tap="onRestart"></action-button>
+    <text class="disclaimer">仅供娱乐，别太当真</text>
+  </view>
+</view>
