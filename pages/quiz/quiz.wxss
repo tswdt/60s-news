@@ -107,6 +107,14 @@
   font-size: 100rpx;
 }
 
+.deco-shape {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFE8D6, #FFD4B8);
+  opacity: 0.5;
+}
+
 .options-section {
   display: flex;
   flex-direction: column;

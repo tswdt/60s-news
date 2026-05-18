@@ -33,6 +33,15 @@
   border: 1rpx solid #E0E0E0;
 }
 
+.action-btn-tertiary {
+  background: #F5F5F5;
+  border: 1rpx solid #D0D0D0;
+}
+
+.action-btn-text-tertiary {
+  color: #888888;
+}
+
 .action-btn-disabled {
   background: #E0E0E0;
   border-color: #E0E0E0;

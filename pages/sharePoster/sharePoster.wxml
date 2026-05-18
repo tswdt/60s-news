@@ -17,7 +17,7 @@
         <view class="vs-section">
           <view class="vs-player vs-left">
             <view class="vs-avatar avatar-self">
-              <text class="vs-emoji">🧑</text>
+              <view class="avatar-placeholder"></view>
             </view>
             <text class="vs-name">我</text>
             <text class="vs-score score-self">{{selfScore}}分</text>
@@ -30,7 +30,7 @@
 
           <view class="vs-player vs-right">
             <view class="vs-avatar avatar-friend">
-              <text class="vs-emoji">🧑</text>
+              <view class="avatar-placeholder"></view>
             </view>
             <text class="vs-name">TA</text>
             <text class="vs-score score-friend">{{friendScore}}分</text>

@@ -16,14 +16,18 @@
         </view>
         <view class="center-figure">
           <view class="figure-circle">
-            <text class="figure-emoji">👴</text>
+            <image class="figure-img" src="/assets/icons/elder.png" mode="aspectFit"></image>
           </view>
         </view>
         <view class="side-figure left-figure">
-          <text class="figure-emoji-small">🧑</text>
+          <view class="side-circle">
+            <view class="avatar-placeholder-sm"></view>
+          </view>
         </view>
         <view class="side-figure right-figure">
-          <text class="figure-emoji-small">👩</text>
+          <view class="side-circle">
+            <view class="avatar-placeholder-sm"></view>
+          </view>
         </view>
       </view>
     </view>
@@ -38,37 +42,37 @@
       <view class="dimension-grid">
         <view class="dimension-item">
           <view class="dimension-icon" style="background: #FFF0E6;">
-            <text class="dimension-emoji">👴</text>
+            <image class="dimension-img" src="/assets/icons/elder.png" mode="aspectFit"></image>
           </view>
           <text class="dimension-label">长辈感</text>
         </view>
         <view class="dimension-item">
           <view class="dimension-icon" style="background: #E8F4FD;">
-            <text class="dimension-emoji">☕</text>
+            <image class="dimension-img" src="/assets/icons/tea.png" mode="aspectFit"></image>
           </view>
           <text class="dimension-label">端着感</text>
         </view>
         <view class="dimension-item">
           <view class="dimension-icon" style="background: #FFF8E1;">
-            <text class="dimension-emoji">👑</text>
+            <image class="dimension-img" src="/assets/icons/crown.png" mode="aspectFit"></image>
           </view>
           <text class="dimension-label">懂王感</text>
         </view>
         <view class="dimension-item">
           <view class="dimension-icon" style="background: #F3E8FF;">
-            <text class="dimension-emoji">🎤</text>
+            <image class="dimension-img" src="/assets/icons/mic.png" mode="aspectFit"></image>
           </view>
           <text class="dimension-label">冷场感</text>
         </view>
         <view class="dimension-item">
           <view class="dimension-icon" style="background: #E8F5E9;">
-            <text class="dimension-emoji">🏅</text>
+            <image class="dimension-img" src="/assets/icons/medal.png" mode="aspectFit"></image>
           </view>
           <text class="dimension-label">资历感</text>
         </view>
         <view class="dimension-item">
           <view class="dimension-icon" style="background: #E3F2FD;">
-            <text class="dimension-emoji">📢</text>
+            <image class="dimension-img" src="/assets/icons/megaphone.png" mode="aspectFit"></image>
           </view>
           <text class="dimension-label">指挥感</text>
         </view>

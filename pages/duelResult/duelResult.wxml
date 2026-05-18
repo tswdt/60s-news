@@ -5,16 +5,16 @@
     </view>
 
     <view class="winner-banner">
-      <text class="banner-crown">👑</text>
+      <image class="banner-crown" src="/assets/icons/crown.png" mode="aspectFit"></image>
       <text class="banner-text">本局老登：{{winnerLabel}}</text>
     </view>
 
     <view class="battle-section">
       <view class="player-card {{playerA.isWinner ? 'card-winner' : 'card-loser'}}">
-        <view class="card-crown" wx:if="{{playerA.isWinner}}">👑</view>
+        <image class="card-crown" wx:if="{{playerA.isWinner}}" src="/assets/icons/crown.png" mode="aspectFit"></image>
         <view class="player-avatar {{playerA.isWinner ? 'avatar-winner' : 'avatar-loser'}}">
           <image class="avatar-img" src="/assets/images/home-hero.png" mode="aspectFit" wx:if="{{playerA.isSelf}}"></image>
-          <text class="avatar-emoji" wx:else>🧑</text>
+          <view class="avatar-placeholder" wx:else></view>
         </view>
         <text class="player-name">{{playerA.name}}</text>
         <text class="player-score" style="color: {{playerA.isWinner ? '#FF7A45' : '#5B9BD5'}}">{{playerA.percentage}}%</text>
@@ -26,10 +26,10 @@
       </view>
 
       <view class="player-card {{playerB.isWinner ? 'card-winner' : 'card-loser'}}">
-        <view class="card-crown" wx:if="{{playerB.isWinner}}">👑</view>
+        <image class="card-crown" wx:if="{{playerB.isWinner}}" src="/assets/icons/crown.png" mode="aspectFit"></image>
         <view class="player-avatar {{playerB.isWinner ? 'avatar-winner' : 'avatar-loser'}}">
           <image class="avatar-img" src="/assets/images/home-hero.png" mode="aspectFit" wx:if="{{playerB.isSelf}}"></image>
-          <text class="avatar-emoji" wx:else>🧑</text>
+          <view class="avatar-placeholder" wx:else></view>
         </view>
         <text class="player-name">{{playerB.name}}</text>
         <text class="player-score" style="color: {{playerB.isWinner ? '#FF7A45' : '#5B9BD5'}}">{{playerB.percentage}}%</text>
@@ -41,7 +41,7 @@
       <text class="section-title">老登特征</text>
       <view class="feature-tags">
         <view class="feature-tag" wx:for="{{winnerFeatures}}" wx:key="text" style="background: {{item.bgColor}}">
-          <text class="tag-emoji">{{item.icon}}</text>
+          <image class="tag-icon" src="{{item.icon}}" mode="aspectFit"></image>
           <text class="tag-text">{{item.text}}</text>
         </view>
       </view>

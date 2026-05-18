@@ -1,43 +1,76 @@
 <view class="page-container">
   <view class="page-content">
     <view class="result-header">
-      <text class="result-title">你的<text class="highlight">老登味</text>档案已生成</text>
+      <text class="result-title">老登味<text class="highlight">初检报告</text></text>
     </view>
 
-    <view class="score-card">
-      <view class="score-left">
-        <image class="hero-img" src="/assets/images/home-hero.png" mode="aspectFit"></image>
+    <view class="status-card">
+      <view class="status-row">
+        <view class="status-dot pulse"></view>
+        <text class="status-label">当前状态：</text>
+        <text class="status-value highlight">待对比</text>
       </view>
-      <view class="score-right">
-        <view class="ring-wrap">
-          <view class="ring-bg"></view>
-          <view class="ring-fill" style="transform: rotate({{ringRotate}}deg)"></view>
-          <view class="ring-inner">
-            <text class="ring-label">老登味</text>
-            <text class="ring-value">{{percentage}}%</text>
-          </view>
-        </view>
-        <view class="level-tag">
-          <text class="level-emoji">{{levelEmoji}}</text>
-          <text class="level-name">{{level}}</text>
-        </view>
+      <view class="status-divider"></view>
+      <view class="status-row">
+        <view class="status-dot dot-orange"></view>
+        <text class="status-label">系统检测到</text>
+        <text class="status-value">{{featureCount}} 个可疑特征</text>
       </view>
+    </view>
+
+    <view class="identity-card">
+      <view class="identity-badge">
+        <image class="identity-icon" src="/assets/icons/crown.png" mode="aspectFit"></image>
+        <text class="identity-label">本局身份</text>
+      </view>
+      <text class="identity-value">待好友进局后判定</text>
+      <text class="identity-hint">单人鉴定无法出具最终结论</text>
     </view>
 
     <view class="features-section">
-      <text class="section-title">你的 3 大老登味特征</text>
+      <text class="section-title">特征扫描结果</text>
       <view class="feature-list">
-        <view class="feature-item" wx:for="{{features}}" wx:key="name">
-          <view class="feature-icon" style="background: {{item.bgColor}}">
-            <text class="feature-emoji">{{item.icon}}</text>
+        <view class="feature-item feature-revealed" wx:if="{{topFeature}}">
+          <view class="feature-icon" style="background: {{topFeature.bgColor}}">
+            <image class="feature-img" src="{{topFeature.icon}}" mode="aspectFit"></image>
           </view>
           <view class="feature-info">
             <view class="feature-header">
-              <text class="feature-name">{{item.name}}</text>
-              <text class="feature-level" style="color: {{item.color}}">{{item.level}}</text>
+              <text class="feature-name">已确认：{{topFeature.name}}</text>
+              <text class="feature-level" style="color: {{topFeature.color}}">{{topFeature.level}}</text>
             </view>
             <view class="feature-bar">
-              <view class="feature-bar-fill" style="width: {{item.percent}}%; background: {{item.color}}"></view>
+              <view class="feature-bar-fill" style="width: {{topFeature.percent}}%; background: {{topFeature.color}}"></view>
+            </view>
+          </view>
+        </view>
+
+        <view class="feature-item feature-locked">
+          <view class="feature-icon icon-locked">
+            <view class="lock-shape"></view>
+          </view>
+          <view class="feature-info">
+            <view class="feature-header">
+              <text class="feature-name feature-name-locked">待对比确认</text>
+              <text class="feature-level level-locked">???</text>
+            </view>
+            <view class="feature-bar">
+              <view class="feature-bar-fill bar-locked"></view>
+            </view>
+          </view>
+        </view>
+
+        <view class="feature-item feature-locked">
+          <view class="feature-icon icon-locked">
+            <view class="lock-shape"></view>
+          </view>
+          <view class="feature-info">
+            <view class="feature-header">
+              <text class="feature-name feature-name-locked">待对比确认</text>
+              <text class="feature-level level-locked">???</text>
+            </view>
+            <view class="feature-bar">
+              <view class="feature-bar-fill bar-locked"></view>
             </view>
           </view>
         </view>
@@ -46,30 +79,34 @@
 
     <view class="invite-card">
       <view class="invite-top">
-        <text class="invite-icon">⚔️</text>
+        <image class="invite-icon" src="/assets/icons/megaphone.png" mode="aspectFit"></image>
       </view>
       <view class="invite-content">
-        <text class="invite-text">一个人只能测出老登味</text>
+        <text class="invite-text">一个人只能测出老登味，</text>
         <text class="invite-text">两个人才能判断<text class="highlight">谁才是本局老登</text></text>
       </view>
       <view class="invite-figures">
         <view class="invite-person">
           <text class="invite-bubble">我才不是！</text>
-          <text class="invite-emoji">🧑</text>
+          <view class="invite-avatar">
+            <view class="avatar-placeholder-inv"></view>
+          </view>
         </view>
         <text class="invite-vs">VS</text>
         <view class="invite-person">
           <text class="invite-bubble">你才老登！</text>
-          <text class="invite-emoji">🧑</text>
+          <view class="invite-avatar">
+            <view class="avatar-placeholder-inv"></view>
+          </view>
         </view>
       </view>
-      <text class="invite-hint">快拉上好友，来一局终极判定吧！</text>
+      <text class="invite-hint">好友进局后，才能出具最终判定</text>
     </view>
   </view>
 
   <view class="page-footer">
-    <action-button text="拉朋友进局" type="primary" bind:tap="onInviteFriend"></action-button>
-    <action-button text="先看简版结果" type="secondary" bind:tap="onViewBrief"></action-button>
+    <action-button text="拉朋友进局定案" type="primary" bind:tap="onInviteFriend"></action-button>
+    <action-button text="先看简版提示" type="secondary" bind:tap="onViewBrief"></action-button>
     <text class="disclaimer">结果仅供娱乐，别太当真哦~</text>
   </view>
 </view>

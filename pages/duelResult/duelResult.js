@@ -4,17 +4,17 @@ var MOCK_FRIEND_RESULT = {
   level: '资深老登',
   levelDesc: '老登气质已经相当明显了',
   dimensionResult: {
-    elder: { key: 'elder', name: '长辈感', icon: '👴', color: '#FF7A45', bgColor: '#FFF0E6', percent: 85, level: '偏高' },
-    pose: { key: 'pose', name: '端着感', icon: '☕', color: '#5B9BD5', bgColor: '#E8F4FD', percent: 60, level: '明显' },
-    knowitall: { key: 'knowitall', name: '懂王感', icon: '👑', color: '#F5A623', bgColor: '#FFF8E1', percent: 90, level: '偏高' },
-    awkward: { key: 'awkward', name: '冷场感', icon: '🎤', color: '#9B59B6', bgColor: '#F3E8FF', percent: 45, level: '中等' },
-    seniority: { key: 'seniority', name: '资历感', icon: '🏅', color: '#4CAF50', bgColor: '#E8F5E9', percent: 75, level: '偏高' },
-    command: { key: 'command', name: '指挥感', icon: '📢', color: '#2196F3', bgColor: '#E3F2FD', percent: 88, level: '偏高' }
+    elder: { key: 'elder', name: '长辈感', icon: '/assets/icons/elder.png', color: '#FF7A45', bgColor: '#FFF0E6', percent: 85, level: '偏高' },
+    pose: { key: 'pose', name: '端着感', icon: '/assets/icons/tea.png', color: '#5B9BD5', bgColor: '#E8F4FD', percent: 60, level: '明显' },
+    knowitall: { key: 'knowitall', name: '懂王感', icon: '/assets/icons/crown.png', color: '#F5A623', bgColor: '#FFF8E1', percent: 90, level: '偏高' },
+    awkward: { key: 'awkward', name: '冷场感', icon: '/assets/icons/mic.png', color: '#9B59B6', bgColor: '#F3E8FF', percent: 45, level: '中等' },
+    seniority: { key: 'seniority', name: '资历感', icon: '/assets/icons/medal.png', color: '#4CAF50', bgColor: '#E8F5E9', percent: 75, level: '偏高' },
+    command: { key: 'command', name: '指挥感', icon: '/assets/icons/megaphone.png', color: '#2196F3', bgColor: '#E3F2FD', percent: 88, level: '偏高' }
   },
   topFeatures: [
-    { name: '懂王感', icon: '👑', color: '#F5A623', bgColor: '#FFF8E1', percent: 90, level: '偏高' },
-    { name: '指挥感', icon: '📢', color: '#2196F3', bgColor: '#E3F2FD', percent: 88, level: '偏高' },
-    { name: '长辈感', icon: '👴', color: '#FF7A45', bgColor: '#FFF0E6', percent: 85, level: '偏高' }
+    { name: '懂王感', icon: '/assets/icons/crown.png', color: '#F5A623', bgColor: '#FFF8E1', percent: 90, level: '偏高' },
+    { name: '指挥感', icon: '/assets/icons/megaphone.png', color: '#2196F3', bgColor: '#E3F2FD', percent: 88, level: '偏高' },
+    { name: '长辈感', icon: '/assets/icons/elder.png', color: '#FF7A45', bgColor: '#FFF0E6', percent: 85, level: '偏高' }
   ]
 }
 

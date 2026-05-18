@@ -1,8 +1,8 @@
 <view class="result-card {{isWinner ? 'result-card-winner' : 'result-card-normal'}}">
-  <view class="card-crown" wx:if="{{isWinner}}">👑</view>
+  <image class="card-crown" wx:if="{{isWinner}}" src="/assets/icons/crown.png" mode="aspectFit"></image>
   <view class="card-avatar {{isWinner ? 'avatar-winner' : 'avatar-normal'}}">
     <image wx:if="{{avatar}}" class="avatar-img" src="{{avatar}}" mode="aspectFill"></image>
-    <text wx:else class="avatar-emoji">🧑</text>
+    <view wx:else class="avatar-placeholder"></view>
   </view>
   <text class="card-nickname">{{nickname}}</text>
   <text class="card-score" style="color: {{isWinner ? '#FF7A45' : '#5B9BD5'}}">{{score}}%</text>

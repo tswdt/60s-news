@@ -3,7 +3,6 @@ var mockQuestions = [
     id: 1,
     dimension: 'command',
     question: '一群人出去玩，你更常扮演什么角色？',
-    emoji: '🗺️',
     options: [
       { label: 'A', text: '我来安排路线和行程', score: 9 },
       { label: 'B', text: '跟着走就行，去哪都行', score: 2 },
@@ -15,7 +14,6 @@ var mockQuestions = [
     id: 2,
     dimension: 'seniority',
     question: '朋友聚会时，你总喜欢做什么？',
-    emoji: '🍻',
     options: [
       { label: 'A', text: '抢着买单，然后说"我来我来"', score: 8 },
       { label: 'B', text: '讲自己年轻时的辉煌事迹', score: 10 },
@@ -27,7 +25,6 @@ var mockQuestions = [
     id: 3,
     dimension: 'knowitall',
     question: '遇到不同意见时，你的反应是？',
-    emoji: '😤',
     options: [
       { label: 'A', text: '"我吃的盐比你吃的饭还多"', score: 10 },
       { label: 'B', text: '耐心倾听并尊重对方观点', score: 1 },
@@ -39,7 +36,6 @@ var mockQuestions = [
     id: 4,
     dimension: 'seniority',
     question: '对新鲜事物的态度是？',
-    emoji: '📱',
     options: [
       { label: 'A', text: '"都是些什么乱七八糟的"', score: 9 },
       { label: 'B', text: '好奇并愿意尝试了解', score: 1 },
@@ -51,7 +47,6 @@ var mockQuestions = [
     id: 5,
     dimension: 'elder',
     question: '吃饭时，你的习惯是？',
-    emoji: '🍜',
     options: [
       { label: 'A', text: '疯狂给别人夹菜"多吃点"', score: 8 },
       { label: 'B', text: '询问忌口，各取所需', score: 1 },
@@ -63,7 +58,6 @@ var mockQuestions = [
     id: 6,
     dimension: 'awkward',
     question: '在家庭群里，你经常发什么？',
-    emoji: '💬',
     options: [
       { label: 'A', text: '早安晚安+荷花表情包', score: 8 },
       { label: 'B', text: '各种谣言和伪科学文章', score: 10 },
@@ -75,7 +69,6 @@ var mockQuestions = [
     id: 7,
     dimension: 'command',
     question: '别人说话时，你的表现是？',
-    emoji: '🗣️',
     options: [
       { label: 'A', text: '经常打断"不对不对，应该是"', score: 10 },
       { label: 'B', text: '认真听完再发表意见', score: 1 },
@@ -87,7 +80,6 @@ var mockQuestions = [
     id: 8,
     dimension: 'pose',
     question: '对于年轻人的消费观，你的看法是？',
-    emoji: '💰',
     options: [
       { label: 'A', text: '"就知道乱花钱，不会过日子"', score: 9 },
       { label: 'B', text: '理解并尊重不同的消费方式', score: 1 },
@@ -99,7 +91,6 @@ var mockQuestions = [
     id: 9,
     dimension: 'knowitall',
     question: '你最常说的口头禅是？',
-    emoji: '📢',
     options: [
       { label: 'A', text: '"我都是为你好"', score: 10 },
       { label: 'B', text: '"你不懂，听我的"', score: 9 },
@@ -111,7 +102,6 @@ var mockQuestions = [
     id: 10,
     dimension: 'awkward',
     question: '拍照时，你的表现是？',
-    emoji: '📸',
     options: [
       { label: 'A', text: '必须站C位，还要指挥站位', score: 9 },
       { label: 'B', text: '配合摆pose，开心就好', score: 2 },
@@ -122,12 +112,12 @@ var mockQuestions = [
 ]
 
 var DIMENSION_MAP = {
-  elder: { name: '长辈感', icon: '👴', color: '#FF7A45', bgColor: '#FFF0E6' },
-  pose: { name: '端着感', icon: '☕', color: '#5B9BD5', bgColor: '#E8F4FD' },
-  knowitall: { name: '懂王感', icon: '👑', color: '#F5A623', bgColor: '#FFF8E1' },
-  awkward: { name: '冷场感', icon: '🎤', color: '#9B59B6', bgColor: '#F3E8FF' },
-  seniority: { name: '资历感', icon: '🏅', color: '#4CAF50', bgColor: '#E8F5E9' },
-  command: { name: '指挥感', icon: '📢', color: '#2196F3', bgColor: '#E3F2FD' }
+  elder: { name: '长辈感', icon: '/assets/icons/elder.png', color: '#FF7A45', bgColor: '#FFF0E6' },
+  pose: { name: '端着感', icon: '/assets/icons/tea.png', color: '#5B9BD5', bgColor: '#E8F4FD' },
+  knowitall: { name: '懂王感', icon: '/assets/icons/crown.png', color: '#F5A623', bgColor: '#FFF8E1' },
+  awkward: { name: '冷场感', icon: '/assets/icons/mic.png', color: '#9B59B6', bgColor: '#F3E8FF' },
+  seniority: { name: '资历感', icon: '/assets/icons/medal.png', color: '#4CAF50', bgColor: '#E8F5E9' },
+  command: { name: '指挥感', icon: '/assets/icons/megaphone.png', color: '#2196F3', bgColor: '#E3F2FD' }
 }
 
 function calcDimensionScores(questions, answers) {
@@ -222,7 +212,8 @@ Page({
     currentQuestion: null
   },
 
-  onLoad: function() {
+  onLoad: function(options) {
+    this.quizOptions = options || {}
     this.initQuiz()
   },
 
@@ -321,9 +312,16 @@ Page({
 
     wx.setStorageSync('selfResult', selfResult)
 
-    wx.navigateTo({
-      url: '/pages/halfResult/halfResult?percentage=' + oldScore + '&level=' + level + '&levelDesc=' + levelDesc
-    })
+    if (this.quizOptions && this.quizOptions.mode === 'friend') {
+      wx.setStorageSync('friendResult', selfResult)
+      wx.redirectTo({
+        url: '/pages/duelResult/duelResult'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/halfResult/halfResult?percentage=' + oldScore + '&level=' + level + '&levelDesc=' + levelDesc
+      })
+    }
   },
 
   onShareAppMessage: function() {

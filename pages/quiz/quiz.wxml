@@ -19,7 +19,7 @@
       <text class="question-text">{{currentQuestion.question}}</text>
     </view>
     <view class="question-deco">
-      <text class="deco-emoji">{{currentQuestion.emoji}}</text>
+      <view class="deco-shape"></view>
     </view>
   </view>
 

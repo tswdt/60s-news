@@ -9,11 +9,11 @@
 
     <view class="explain-card">
       <view class="explain-line">
-        <text class="explain-dot">⚡</text>
+        <view class="explain-dot dot-lightning"></view>
         <text class="explain-text">对方正在试图证明自己不是老登。</text>
       </view>
       <view class="explain-line">
-        <text class="explain-dot">🔓</text>
+        <view class="explain-dot dot-unlock"></view>
         <text class="explain-text">你测完后，双方结果同时公开。</text>
       </view>
     </view>
@@ -33,7 +33,7 @@
       </view>
       <view class="versus-player">
         <view class="versus-avatar right">
-          <text class="versus-emoji">🧑</text>
+          <view class="avatar-placeholder-sm"></view>
         </view>
         <text class="versus-name">你</text>
         <view class="versus-badge waiting">
@@ -55,7 +55,7 @@
 
   <view class="page-content error-content" wx:if="{{errorState}}">
     <view class="error-block">
-      <text class="error-emoji">😵</text>
+      <view class="error-icon-placeholder"></view>
       <text class="error-title">邀请链接无效</text>
       <text class="error-desc">该链接可能已过期或格式错误</text>
     </view>

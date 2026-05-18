@@ -1,20 +1,16 @@
 Component({
   properties: {
-    icon: {
-      type: String,
-      value: '📭'
-    },
     title: {
       type: String,
-      value: '暂无内容'
+      value: '还没有结果'
     },
     desc: {
       type: String,
-      value: ''
+      value: '先完成一次鉴定吧。'
     },
-    btnText: {
+    buttonText: {
       type: String,
-      value: ''
+      value: '开始鉴定'
     }
   },
 

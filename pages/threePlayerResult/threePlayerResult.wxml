@@ -9,10 +9,10 @@
 
     <view class="cards-section">
       <view class="player-card card-gold" wx:if="{{players.length > 0}}">
-        <view class="card-crown">👑</view>
+        <image class="card-crown" src="/assets/icons/crown.png" mode="aspectFit"></image>
         <view class="card-rank-badge gold-badge">1</view>
         <view class="card-avatar avatar-gold">
-          <text class="avatar-emoji">🧑</text>
+          <view class="avatar-placeholder"></view>
         </view>
         <text class="card-name">{{players[0].name}}</text>
         <view class="card-identity identity-gold">
@@ -25,7 +25,7 @@
       <view class="player-card card-blue" wx:if="{{players.length > 1}}">
         <view class="card-rank-badge blue-badge">2</view>
         <view class="card-avatar avatar-blue">
-          <text class="avatar-emoji">🧑</text>
+          <view class="avatar-placeholder"></view>
         </view>
         <text class="card-name">{{players[1].name}}</text>
         <view class="card-identity identity-blue">
@@ -38,7 +38,7 @@
       <view class="player-card card-purple" wx:if="{{players.length > 2}}">
         <view class="card-rank-badge purple-badge">3</view>
         <view class="card-avatar avatar-purple">
-          <text class="avatar-emoji">🧑</text>
+          <view class="avatar-placeholder"></view>
         </view>
         <text class="card-name">{{players[2].name}}</text>
         <view class="card-identity identity-purple">
@@ -50,7 +50,7 @@
     </view>
 
     <view class="verdict-card">
-      <text class="verdict-icon">🎭</text>
+      <view class="verdict-icon"></view>
       <text class="verdict-text">{{verdict}}</text>
     </view>
   </view>

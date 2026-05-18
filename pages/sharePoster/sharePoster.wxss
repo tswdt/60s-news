@@ -111,6 +111,38 @@
   font-size: 48rpx;
 }
 
+.avatar-placeholder {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #E8D5C4;
+  position: relative;
+}
+
+.avatar-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: #D4BFA8;
+  transform: translate(-50%, -70%);
+}
+
+.avatar-placeholder::after {
+  content: '';
+  position: absolute;
+  bottom: 8rpx;
+  left: 50%;
+  width: 36rpx;
+  height: 18rpx;
+  border-radius: 18rpx 18rpx 0 0;
+  background: #D4BFA8;
+  transform: translateX(-50%);
+}
+
 .vs-name {
   font-size: 28rpx;
   font-weight: 700;

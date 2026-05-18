@@ -99,8 +99,9 @@
   justify-content: center;
 }
 
-.figure-emoji {
-  font-size: 80rpx;
+.figure-img {
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .side-figure {
@@ -116,8 +117,47 @@
   right: 60rpx;
 }
 
-.figure-emoji-small {
-  font-size: 48rpx;
+.side-circle {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E8F4FD, #D4ECFA);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-placeholder-sm {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: #B8D4EC;
+  position: relative;
+}
+
+.avatar-placeholder-sm::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: #9BBDD9;
+  transform: translate(-50%, -70%);
+}
+
+.avatar-placeholder-sm::after {
+  content: '';
+  position: absolute;
+  bottom: 2rpx;
+  left: 50%;
+  width: 28rpx;
+  height: 14rpx;
+  border-radius: 14rpx 14rpx 0 0;
+  background: #9BBDD9;
+  transform: translateX(-50%);
 }
 
 .action-section {
@@ -163,8 +203,9 @@
   margin-bottom: 8rpx;
 }
 
-.dimension-emoji {
-  font-size: 40rpx;
+.dimension-img {
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .dimension-label {

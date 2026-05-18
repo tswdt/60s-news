@@ -6,11 +6,11 @@ Component({
     },
     desc: {
       type: String,
-      value: '请稍后再试'
+      value: '当前页面数据异常，请重新进入。'
     },
-    btnText: {
+    buttonText: {
       type: String,
-      value: '重试'
+      value: '返回首页'
     }
   },
 

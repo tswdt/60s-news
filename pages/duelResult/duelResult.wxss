@@ -39,7 +39,8 @@
 }
 
 .banner-crown {
-  font-size: 48rpx;
+  width: 48rpx;
+  height: 48rpx;
   margin-bottom: 4rpx;
 }
 
@@ -87,7 +88,8 @@
 .card-crown {
   position: absolute;
   top: -24rpx;
-  font-size: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
   filter: drop-shadow(0 2rpx 6rpx rgba(255, 165, 0, 0.4));
 }
 
@@ -116,8 +118,36 @@
   height: 80rpx;
 }
 
-.avatar-emoji {
-  font-size: 52rpx;
+.avatar-placeholder {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #E8D5C4;
+  position: relative;
+}
+
+.avatar-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: #D4BFA8;
+  transform: translate(-50%, -70%);
+}
+
+.avatar-placeholder::after {
+  content: '';
+  position: absolute;
+  bottom: 12rpx;
+  left: 50%;
+  width: 48rpx;
+  height: 24rpx;
+  border-radius: 24rpx 24rpx 0 0;
+  background: #D4BFA8;
+  transform: translateX(-50%);
 }
 
 .player-name {
@@ -181,8 +211,9 @@
   border-radius: 24rpx;
 }
 
-.tag-emoji {
-  font-size: 26rpx;
+.tag-icon {
+  width: 28rpx;
+  height: 28rpx;
 }
 
 .tag-text {

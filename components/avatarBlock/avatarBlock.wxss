@@ -30,14 +30,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.placeholder-emoji {
-  font-size: 44rpx;
+.placeholder-head {
+  width: 36%;
+  height: 36%;
+  border-radius: 50%;
+  background: #D4BFA8;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.avatar-large .placeholder-emoji {
-  font-size: 60rpx;
+.placeholder-body {
+  width: 56%;
+  height: 28%;
+  border-radius: 28rpx 28rpx 0 0;
+  background: #D4BFA8;
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.avatar-large .placeholder-head {
+  width: 32%;
+  height: 32%;
+}
+
+.avatar-large .placeholder-body {
+  width: 52%;
+  height: 26%;
 }
 
 .avatar-img {

@@ -18,7 +18,27 @@
 }
 
 .error-icon {
-  font-size: 56rpx;
+  width: 48rpx;
+  height: 48rpx;
+  position: relative;
+}
+
+.error-icon-x {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40rpx;
+  height: 6rpx;
+  background: #FF7A45;
+  border-radius: 3rpx;
+}
+
+.x-left {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.x-right {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .error-title {
@@ -32,19 +52,20 @@
   font-size: 26rpx;
   color: #8B7355;
   text-align: center;
+  line-height: 1.6;
   margin-bottom: 32rpx;
 }
 
 .error-action {
-  background: linear-gradient(135deg, #FF9A5C, #FF7A45);
+  background: linear-gradient(135deg, #FF7A45, #FF4D2E);
   padding: 16rpx 48rpx;
-  border-radius: 32rpx;
-  box-shadow: 0 4rpx 16rpx rgba(255, 122, 69, 0.25);
+  border-radius: 44rpx;
+  box-shadow: 0 4rpx 16rpx rgba(255, 77, 46, 0.25);
 }
 
 .error-action:active {
-  transform: scale(0.97);
-  opacity: 0.9;
+  transform: scale(0.98);
+  opacity: 0.85;
 }
 
 .error-action-text {
