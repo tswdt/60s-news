@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.local
+.env.*.local
+.DS_Store
+*.log
+apps/web/node_modules/
+apps/web/dist/
+cloudfunctions/tutor/node_modules/
+cloudfunctions/tutor/dist/
+cloudfunctions/detect-subject/node_modules/
+cloudfunctions/upload-question-image/node_modules/

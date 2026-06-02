@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/tutor/tutor",
+    "pages/mistakes/mistakes",
+    "pages/report/report"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#6366F1",
+    "navigationBarTitleText": "AI智学助手",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#94A3B8",
+    "selectedColor": "#6366F1",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tutor/tutor",
+        "text": "辅导"
+      },
+      {
+        "pagePath": "pages/mistakes/mistakes",
+        "text": "错题本"
+      },
+      {
+        "pagePath": "pages/report/report",
+        "text": "报告"
+      }
+    ]
+  },
+  "cloud": true,
+  "sitemapLocation": "sitemap.json"
+}

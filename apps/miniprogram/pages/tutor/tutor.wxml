@@ -1,0 +1,82 @@
+<view class="page">
+  <view class="status-bar">
+    <text class="status-subject">{{subjectLabel}}</text>
+    <text class="status-divider">|</text>
+    <text class="status-grade">{{gradeLabel}}</text>
+    <text class="status-divider">|</text>
+    <text class="status-model">{{modelLabel}}</text>
+  </view>
+
+  <view class="visual-area" wx:if="{{currentVisual.type !== 'none'}}">
+    <view wx:if="{{currentVisual.type === 'rectangle_grid'}}" class="simple-visual">
+      <view class="grid-container">
+        <view wx:for="{{gridRows}}" wx:key="ri" class="grid-row">
+          <view wx:for="{{item}}" wx:key="ci" class="grid-cell {{item.highlight ? 'highlight' : ''}}"></view>
+        </view>
+      </view>
+      <text class="visual-label">📐 {{visualLabel}}</text>
+    </view>
+    <view wx:else class="complex-visual-placeholder">
+      <text class="complex-icon">📊</text>
+      <text class="complex-text">请在网页版查看完整图形讲解</text>
+    </view>
+  </view>
+
+  <view class="topic-bar" wx:if="{{currentTopic}}">
+    <text class="topic-label">📖 当前知识点</text>
+    <text class="topic-text">{{currentTopic}}</text>
+  </view>
+
+  <view class="step-bar" wx:if="{{currentStep > 0}}">
+    <text class="step-text">步骤 {{currentStep}}</text>
+  </view>
+
+  <view class="ai-panel">
+    <view class="ai-reply" wx:if="{{aiReply}}">
+      <text class="ai-reply-text">{{aiReply}}</text>
+    </view>
+
+    <view class="ai-question" wx:if="{{questionToStudent}}">
+      <view class="question-header">
+        <text class="question-icon">🤔</text>
+        <text class="question-label">AI 提问</text>
+      </view>
+      <text class="question-text">{{questionToStudent}}</text>
+    </view>
+
+    <view class="hint-area" wx:if="{{hintLevel > 0}}">
+      <button class="hint-btn" bindtap="onShowHint" size="mini">
+        💡 提示 (等级 {{hintLevel}})
+      </button>
+      <view class="hint-content" wx:if="{{showHint && misconceptionCheck.length > 0}}">
+        <text wx:for="{{misconceptionCheck}}" wx:key="index" class="hint-item">• {{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="input-area">
+    <view class="input-row">
+      <input
+        class="answer-input"
+        value="{{inputValue}}"
+        bindinput="onInput"
+        placeholder="输入你的回答..."
+        confirm-type="send"
+        bindconfirm="onSend"
+        disabled="{{isLoading}}"
+      />
+      <button
+        class="send-btn {{isLoading ? 'loading' : ''}}"
+        bindtap="onSend"
+        disabled="{{isLoading || !inputValue}}"
+      >
+        {{isLoading ? '...' : '发送'}}
+      </button>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{!aiReply && !questionToStudent && !isLoading}}">
+    <text class="empty-icon">✏️</text>
+    <text class="empty-text">输入你的问题，开始 AI 辅导</text>
+  </view>
+</view>

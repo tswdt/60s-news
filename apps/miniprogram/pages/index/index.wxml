@@ -1,0 +1,81 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-icon">🎓</text>
+    <text class="hero-title">AI智学助手</text>
+    <text class="hero-desc">引导思考，图形化讲解</text>
+  </view>
+
+  <view class="section">
+    <text class="section-title">📚 选择学科</text>
+    <view class="subject-grid">
+      <view
+        wx:for="{{subjects}}"
+        wx:key="key"
+        class="subject-btn {{subject === item.key ? 'active' : ''}}"
+        data-subject="{{item.key}}"
+        bindtap="onChooseSubject"
+      >
+        <text class="subject-icon">{{item.icon}}</text>
+        <text class="subject-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">🎯 选择年级</text>
+    <view class="grade-groups">
+      <view wx:for="{{gradeGroups}}" wx:key="label" class="grade-group">
+        <text class="grade-label">{{item.label}}</text>
+        <view class="grade-btns">
+          <view
+            wx:for="{{item.items}}"
+            wx:for-item="g"
+            wx:key="key"
+            class="grade-btn {{grade === g.key ? 'active' : ''}}"
+            data-grade="{{g.key}}"
+            bindtap="onChooseGrade"
+          >
+            {{g.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">🤖 AI 模型</text>
+    <view class="model-row">
+      <view
+        wx:for="{{models}}"
+        wx:key="key"
+        class="model-btn {{model === item.key ? 'active' : ''}}"
+        data-model="{{item.key}}"
+        bindtap="onChooseModel"
+      >
+        <view class="model-dot {{model === item.key ? 'active' : ''}}"></view>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">💡 试试这些</text>
+    <view class="quick-list">
+      <view
+        wx:for="{{quickQuestions}}"
+        wx:key="index"
+        class="quick-item"
+        data-q="{{item}}"
+        bindtap="onQuickQuestion"
+      >
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <view class="start-area">
+    <button class="start-btn" bindtap="onStartTutor">
+      开始 AI 辅导 →
+    </button>
+  </view>
+</view>

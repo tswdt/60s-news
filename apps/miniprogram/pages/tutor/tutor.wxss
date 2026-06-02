@@ -1,0 +1,265 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #F1F5F9;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 16rpx 24rpx;
+  background: white;
+  border-bottom: 1rpx solid #E2E8F0;
+  font-size: 22rpx;
+  color: #64748B;
+}
+
+.status-divider {
+  color: #CBD5E1;
+}
+
+.visual-area {
+  margin: 16rpx 24rpx;
+  padding: 24rpx;
+  background: white;
+  border-radius: 16rpx;
+  border: 1rpx solid #E2E8F0;
+  min-height: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-visual {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  margin-bottom: 16rpx;
+}
+
+.grid-row {
+  display: flex;
+  gap: 4rpx;
+}
+
+.grid-cell {
+  width: 56rpx;
+  height: 56rpx;
+  border: 2rpx solid #CBD5E1;
+  border-radius: 4rpx;
+  background: #F8FAFC;
+}
+
+.grid-cell.highlight {
+  background: #6366F1;
+  border-color: #6366F1;
+}
+
+.visual-label {
+  font-size: 22rpx;
+  color: #64748B;
+}
+
+.complex-visual-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  padding: 32rpx;
+}
+
+.complex-icon {
+  font-size: 48rpx;
+}
+
+.complex-text {
+  font-size: 24rpx;
+  color: #94A3B8;
+}
+
+.topic-bar {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx 24rpx;
+  background: #EEF2FF;
+  margin: 0 24rpx;
+  border-radius: 8rpx;
+}
+
+.topic-label {
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #6366F1;
+}
+
+.topic-text {
+  font-size: 24rpx;
+  color: #1E293B;
+  font-weight: 500;
+}
+
+.step-bar {
+  padding: 8rpx 24rpx;
+  margin: 8rpx 24rpx 0;
+}
+
+.step-text {
+  font-size: 22rpx;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+.ai-panel {
+  flex: 1;
+  padding: 16rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.ai-reply {
+  padding: 20rpx 24rpx;
+  background: white;
+  border-radius: 16rpx;
+  border: 1rpx solid #E2E8F0;
+}
+
+.ai-reply-text {
+  font-size: 28rpx;
+  line-height: 1.7;
+  color: #1E293B;
+}
+
+.ai-question {
+  padding: 20rpx 24rpx;
+  background: #EEF2FF;
+  border-radius: 16rpx;
+  border-left: 6rpx solid #6366F1;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.question-icon {
+  font-size: 28rpx;
+}
+
+.question-label {
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #6366F1;
+}
+
+.question-text {
+  font-size: 30rpx;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #1E293B;
+}
+
+.hint-area {
+  padding: 0 4rpx;
+}
+
+.hint-btn {
+  font-size: 22rpx;
+  color: #6366F1;
+  background: transparent;
+  border: 1rpx solid #6366F1;
+  border-radius: 20rpx;
+  padding: 4rpx 16rpx;
+  line-height: 1.6;
+}
+
+.hint-content {
+  margin-top: 12rpx;
+  padding: 16rpx 20rpx;
+  background: #FFFBEB;
+  border-radius: 12rpx;
+  border: 1rpx solid #FDE68A;
+}
+
+.hint-item {
+  display: block;
+  font-size: 24rpx;
+  color: #92400E;
+  line-height: 1.8;
+}
+
+.input-area {
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  background: white;
+  border-top: 1rpx solid #E2E8F0;
+}
+
+.input-row {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+}
+
+.answer-input {
+  flex: 1;
+  height: 72rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #E2E8F0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  background: #F8FAFC;
+}
+
+.send-btn {
+  min-width: 120rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 24rpx;
+  background: #6366F1;
+  color: white;
+  font-size: 28rpx;
+  font-weight: 500;
+  border-radius: 12rpx;
+  border: none;
+}
+
+.send-btn.loading {
+  background: #A5B4FC;
+}
+
+.send-btn[disabled] {
+  background: #CBD5E1;
+  color: white;
+}
+
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+}
+
+.empty-icon {
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+}
+
+.empty-text {
+  font-size: 26rpx;
+  color: #94A3B8;
+}

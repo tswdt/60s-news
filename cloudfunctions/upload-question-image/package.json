@@ -1,0 +1,9 @@
+{
+  "name": "upload-question-image",
+  "version": "1.0.0",
+  "description": "拍题图片上传和识别云函数（预留）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}
