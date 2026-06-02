@@ -53,7 +53,7 @@ function VisualRendererInner({ visual }: Props) {
       return <BalanceScale data={data} />;
 
     case 'timeline':
-      return <TimelineVisual stepIndex={stepIndex || 1} data={data} />;
+      return <TimelineVisual stepIndex={Math.max(0, stepIndex - 1)} data={data} />;
 
     case 'force_diagram':
       return <ForceDiagram stepIndex={stepIndex} data={data} />;
